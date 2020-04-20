@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
 
 
 class LevelsForm extends React.Component{
@@ -10,8 +10,11 @@ class LevelsForm extends React.Component{
                     <Col>
                         <Form>
                             <FormGroup>
-                                <Label for="exampleEmail">Email</Label>
-                                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                                <Label for="exampleEmail">Company Name</Label>
+                                <Input type="email" name="email" id="exampleEmail" placeholder="Company Name" />
+                            </FormGroup>
+                            <FormGroup>
+                                <Input type="text" name="email" id="exampleEmail" placeholder="Level" />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="examplePassword">Password</Label>
@@ -26,6 +29,13 @@ class LevelsForm extends React.Component{
                                 <option>4</option>
                                 <option>5</option>
                                 </Input>
+                            </FormGroup>
+                            <FormGroup>
+                            <InputGroup>
+                                <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                <Input placeholder="Amount" min={0} max={100} type="number" step="1" />
+                                <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                            </InputGroup>
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleText">Text Area</Label>
