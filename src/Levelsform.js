@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
+import companynames from './onlyCompanyName.json';
 
 
 class LevelsForm extends React.Component{
@@ -21,28 +22,9 @@ class LevelsForm extends React.Component{
                                 <Label for="companyname">Company Name</Label>
                                 <Typeahead id="companynameId" onChange={(selected) => {
                                         this.setState({selected});
-                                    }}
-                                    options={["Google","Facebook","Microsoft",
-                                    "Amazon","Apple","LinkedIn",
-                                    "Yahoo","Uber","Lyft",
-                                    "Airbnb","Dropbox","Pinterest",
-                                    "Salesforce","Oracle","Twitter",
-                                    "Netflix","Tesla","Coinbase",
-                                    "Intercom","Zillow","eBay",
-                                    "Instacart","Visa","SoFi",
-                                    "Adobe","Careem","Cruise",
-                                    "Roblox","Robinhood","Shopify",
-                                    "Flipkart","Broadcom","Comcast",
-                                    "Opendoor","ServiceNow","Rubrik",
-                                    "Stripe","Slack","Quora",
-                                    "Square","Bloomberg","Cerner",
-                                    "WalmartLabs","Snap","Affirm",
-                                    "ElectronicArts","Palantir","Twilio",
-                                    "Okta","PayPal","Workday",
-                                    "Pivotal","Autodesk","NetApp",
-                                    "Nvidia","SAP","Atlassian",
-                                    "Twitch","Yelp"
-                                    ]}
+                                }}
+                                allowNew
+                                    options={companynames}
                                     selected={this.state.selected}
                                     placeholder="Company Name"
                                 />
