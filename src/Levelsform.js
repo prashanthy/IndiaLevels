@@ -1,8 +1,16 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
+import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 
 
 class LevelsForm extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: ''
+        };
+    }
+    
     render(){
         return (
             <Container>
@@ -11,7 +19,33 @@ class LevelsForm extends React.Component{
                         <Form>
                             <FormGroup>
                                 <Label for="companyname">Company Name</Label>
-                                <Input type="email" name="companyname" id="companynameId" placeholder="Company Name" />
+                                <Typeahead id="companynameId" onChange={(selected) => {
+                                        this.setState({selected});
+                                    }}
+                                    options={["Google","Facebook","Microsoft",
+                                    "Amazon","Apple","LinkedIn",
+                                    "Yahoo","Uber","Lyft",
+                                    "Airbnb","Dropbox","Pinterest",
+                                    "Salesforce","Oracle","Twitter",
+                                    "Netflix","Tesla","Coinbase",
+                                    "Intercom","Zillow","eBay",
+                                    "Instacart","Visa","SoFi",
+                                    "Adobe","Careem","Cruise",
+                                    "Roblox","Robinhood","Shopify",
+                                    "Flipkart","Broadcom","Comcast",
+                                    "Opendoor","ServiceNow","Rubrik",
+                                    "Stripe","Slack","Quora",
+                                    "Square","Bloomberg","Cerner",
+                                    "WalmartLabs","Snap","Affirm",
+                                    "ElectronicArts","Palantir","Twilio",
+                                    "Okta","PayPal","Workday",
+                                    "Pivotal","Autodesk","NetApp",
+                                    "Nvidia","SAP","Atlassian",
+                                    "Twitch","Yelp"
+                                    ]}
+                                    selected={this.state.selected}
+                                    placeholder="Company Name"
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <Input type="text" name="level" id="levelId" placeholder="Level" />
