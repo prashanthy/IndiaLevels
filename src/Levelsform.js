@@ -10,15 +10,11 @@ class LevelsForm extends React.Component{
                     <Col>
                         <Form>
                             <FormGroup>
-                                <Label for="exampleEmail">Company Name</Label>
-                                <Input type="email" name="email" id="exampleEmail" placeholder="Company Name" />
+                                <Label for="companyname">Company Name</Label>
+                                <Input type="email" name="companyname" id="companynameId" placeholder="Company Name" />
                             </FormGroup>
                             <FormGroup>
-                                <Input type="text" name="email" id="exampleEmail" placeholder="Level" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="examplePassword">Password</Label>
-                                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                                <Input type="text" name="level" id="levelId" placeholder="Level" />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Select</Label>

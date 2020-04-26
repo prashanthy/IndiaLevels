@@ -21,6 +21,7 @@ class App extends React.Component {
         <Navbar className="Color-nav" light expand="md">
           <NavbarBrand className="mx-auto" href="/" style={{color:'white'}}>India Levels.fyi</NavbarBrand>
         </Navbar>
+        <br/>
         <LevelsForm />
       </div>
     );
