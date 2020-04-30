@@ -1,0 +1,725 @@
+{
+    "Google": {
+        "icon": "https://logo.clearbit.com/googleedge.com",
+        "iconGreyscale": "https://logo.clearbit.com/googleedge.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/1y1UHYp.png",
+        "website": "https://google.com",
+        "companyName": "Google",
+        "description": "Google is an American search engine company, founded in 1998 by Sergey Brin and Larry Page that is a subsidiary of the holding company Alphabet. More than 70 percent of worldwide online search requests are handled by Google, placing it at the heart of most Internet users' experience.",
+        "location": "Mountain View, CA",
+        "perks": [
+            "Free Meals",
+            "Free Snacks",
+            "Housing Stipend",
+            "Transportation",
+            "Health Benefits",
+            "Laundry @ Work",
+            "On-Site Gym"
+        ],
+        "vesting": {
+            "stockType": "GSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "feederSchools": [
+            {
+                "schoolName": "Stanford University",
+                "percentage": 0.21
+            },
+            {
+                "schoolName": "Carnegie Mellon University",
+                "percentage": 0.2
+            },
+            {
+                "schoolName": "University of California, Berkeley",
+                "percentage": 0.19
+            },
+            {
+                "schoolName": "Other",
+                "percentage": 0.4
+            }
+        ],
+        "topCompany": true,
+        "complete": true
+    },
+    "Facebook": {
+        "icon": "https://logo.clearbit.com/facebook.com",
+        "iconGreyscale": "https://logo.clearbit.com/facebook.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/WbP1Dvi.png",
+        "website": "https://facebook.com",
+        "companyName": "Facebook",
+        "location": "Menlo Park, CA",
+        "description": "Facebook is a social networking site that makes it easy for you to connect and share with your family and friends online. Originally designed for college students, Facebook was created in 2004 by Mark Zuckerberg while he was enrolled at Harvard University.",
+        "perks": [
+            "Free Lunch",
+            "Free Snacks",
+            "Housing Stipend",
+            "Rooftop Nature Park",
+            "On-Site Tire Replacement",
+            "On-Site Gym",
+            "Transportation",
+            "Health Benefits",
+            "Wellness Reimbursement",
+            "Company Phones"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true,
+        "complete": true
+    },
+    "Microsoft": {
+        "icon": "https://logo.clearbit.com/http://microsoft.com",
+        "iconGreyscale": "https://logo.clearbit.com/microsoft.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/zz5ezmm.png",
+        "website": "https://microsoft.com",
+        "companyName": "Microsoft",
+        "location": "Redmond, WA",
+        "description": "Microsoft develops, manufactures, licenses, supports and sells computer software, consumer electronics, personal computers, and related services. Its best known software products are the Microsoft Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers.",
+        "perks": [
+            "Free drinks",
+            "$800 per year for gym / sports",
+            "On site clinics",
+            "Housing stipend",
+            "Full relocation",
+            "Zero premium health insurance",
+            "Car detailing and wash at work",
+            "On site employee mall",
+            "Employee purchase program",
+            "Regional transit system"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "additionalDetail": "Sometimes a 5 year schedule",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ],
+            "alternateSchedule": [
+                20,
+                20,
+                20,
+                20,
+                20
+            ]
+        },
+        "complete": true
+    },
+    "Amazon": {
+        "icon": "https://logo.clearbit.com/amazon.com",
+        "iconGreyscale": "https://logo.clearbit.com/amazon.com?greyscale=true",
+        "iconLarge": "https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Amazon-512.png",
+        "website": "https://amazon.com",
+        "companyName": "Amazon",
+        "description": "Amazon runs many different services include an online retail shopping business that spans logistics internationally as well as AWS, a tool for hosting Internet services",
+        "location": "Seattle, WA",
+        "vesting": {
+            "stockType": "RSU",
+            "additionalDetail": "Backloaded vesting schedule",
+            "schedule": [
+                5,
+                15,
+                40,
+                40
+            ]
+        },
+        "topCompany": true
+    },
+    "Apple": {
+        "icon": "https://logo.clearbit.com/http://apple.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://apple.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/V9Z8kVf.png",
+        "website": "https://apple.com",
+        "companyName": "Apple",
+        "description": "Apple started out as one of the first computer companies and now designs, develops, and sells many consumer electronics, computer software, and online services including the iPhone and MacBook",
+        "location": "Cupertino, CA",
+        "perks": [
+            "25% Product Discount",
+            "Company-Wide Music Bashes",
+            "Egg Freezing"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        }
+    },
+    "LinkedIn": {
+        "icon": "http://logo.clearbit.com/http://linkedin.com",
+        "iconLarge": "https://i.imgur.com/AQs3zm6.png",
+        "website": "https://linkedin.com",
+        "companyName": "LinkedIn",
+        "description": "LinkedIn is the world's largest professional networking platform with over 575 million members as of 2018",
+        "location": "Sunnyvale, CA",
+        "topCompany": true,
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        }
+    },
+    "Yahoo": {
+        "icon": "https://logo.clearbit.com/http://yahoo.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://yahoo.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/O2wrhr3.png",
+        "website": "https://yahoo.com",
+        "companyName": "Yahoo",
+        "description": "Yahoo is one of the world's leading Internet media companies with products ranging from Email and News to Search and Sports",
+        "location": "Sunnyvale, CA",
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        }
+    },
+    "Uber": {
+        "icon": "https://logo.clearbit.com/http://uber.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://uber.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/WWFXHYX.png",
+        "website": "https://uber.com",
+        "companyName": "Uber",
+        "description": "Uber is an international transportation network company offering peer-to-peer ridesharing, ride service hailing, food delivery, and a bicycle-sharing system",
+        "location": "San Francisco, CA",
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        }
+    },
+    "Lyft": {
+        "icon": "http://logo.clearbit.com/http://lyft.com",
+        "iconLarge": "https://i.imgur.com/6fXDy13.png",
+        "website": "https://lyft.com",
+        "companyName": "Lyft",
+        "description": "Lyft operates a peer-to-peer marketplace for on-demand ridesharing in the United States and Canada",
+        "location": "San Francisco, CA",
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true
+    },
+    "Airbnb": {
+        "icon": "https://logo.clearbit.com/http://airbnb.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://airbnb.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/0N1cRBE.png",
+        "website": "https://airbnb.com",
+        "companyName": "Airbnb",
+        "description": "Airbnb is an online marketplace that lets hosts rent out their properties or spare rooms to guests",
+        "location": "San Francisco, CA",
+        "perks": [
+            "Free Meals",
+            "Quarterly Travel Credit"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true
+    },
+    "Dropbox": {
+        "icon": "https://logo.clearbit.com/http://dropbox.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://dropbox.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/sfdmdbA.png",
+        "website": "https://dropbox.com",
+        "companyName": "Dropbox",
+        "description": "Dropbox is a file hosting company that lets users sync, share, and collaborate on documents in the cloud",
+        "location": "San Francisco, CA",
+        "perks": [
+            "Free Meals",
+            "Custom Work Station",
+            "On-site Fitness Classes",
+            "On-site Laundry",
+            "Wellness Reimbursement",
+            "Commuter Subsidy"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true
+    },
+    "Pinterest": {
+        "icon": "https://logo.clearbit.com/http://pinterest.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://pinterest.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/7J7HXPJ.png",
+        "website": "https://pinterest.com",
+        "companyName": "Pinterest",
+        "description": "Pinterest is a social media company that enables discovery of things like recipes, style inspiration, home hacks and more",
+        "location": "San Francisco, CA",
+        "perks": [
+            "Free Meals",
+            "Phone Bill Reimbursement"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true
+    },
+    "Salesforce": {
+        "icon": "https://logo.clearbit.com/salesforce.com",
+        "iconGreyscale": "https://logo.clearbit.com/salesforce.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/08YOeQ4.png",
+        "website": "https://salesforce.com",
+        "companyName": "Salesforce",
+        "description": "Salesforce is a cloud-based customer relationship management (CRM) software that helps businesses connect with and get more information about their customer base",
+        "location": "San Francisco, CA",
+        "perks": [
+            "Free Snacks",
+            "Tower Views (SF HQ)"
+        ],
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true
+    },
+    "Oracle": {
+        "icon": "https://logo.clearbit.com/http://oracle.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://oracle.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/3gmaNiX.png",
+        "website": "https://oracle.com",
+        "location": "Redwood City, CA",
+        "companyName": "Oracle",
+        "topCompany": true
+    },
+    "Twitter": {
+        "icon": "https://logo.clearbit.com/http://twitter.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://twitter.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/uitCbKH.png",
+        "website": "https://twitter.com",
+        "companyName": "Twitter",
+        "description": "Twitter is an online news and social networking service on which users post and interact with limited length messages known as tweets",
+        "location": "San Francisco, CA",
+        "perks": [
+            "Free Meals",
+            "Free Snacks"
+        ]
+    },
+    "Netflix": {
+        "icon": "https://logo.clearbit.com/http://netflix.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://netflix.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/SgDbVQN.png",
+        "website": "https://netflix.com",
+        "companyName": "Netflix",
+        "description": "Netflix is an Internet subscription company that lets you stream and watch movies and TV shows",
+        "location": "Los Gatos, CA",
+        "perks": [
+            "Free Meals",
+            "Free Snacks"
+        ],
+        "topCompany": true
+    },
+    "Tesla": {
+        "icon": "https://logo.clearbit.com/tesla.com",
+        "iconGreyscale": "https://logo.clearbit.com/tesla.com?greyscale=true",
+        "website": "https://tesla.com",
+        "location": "Palo Alto, CA",
+        "companyName": "Tesla"
+    },
+    "Coinbase": {
+        "icon": "https://logo.clearbit.com/coinbase.com",
+        "iconGreyscale": "https://logo.clearbit.com/coinbase.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/reocaLu.png",
+        "website": "https://coinbase.com",
+        "location": "San Francisco, CA",
+        "companyName": "Coinbase"
+    },
+    "Intercom": {
+        "icon": "https://logo.clearbit.com/intercom.com",
+        "iconGreyscale": "https://logo.clearbit.com/intercom.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/brq2JWc.png",
+        "website": "https://intercom.com",
+        "companyName": "Intercom",
+        "description": "Intercom builds a suite of messaging-first products that all modern internet businesses can use to accelerate growth across the customer lifecycle, from acquisition, to engagement, and support. More than 30,000 businesses, including New Relic, Sotheby’s, and Shopify, use Intercom to connect with a billion unique people worldwide.",
+        "complete": true
+    },
+    "Zillow": {
+        "icon": "https://logo.clearbit.com/Zillowtech.com",
+        "iconGreyscale": "https://logo.clearbit.com/Zillowtech.com?greyscale=true",
+        "website": "https://zillow.com",
+        "location": "Seattle, WA",
+        "companyName": "Zillow"
+    },
+    "eBay": {
+        "icon": "https://logo.clearbit.com/http://ebay.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://ebay.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/7vP0GdO.png",
+        "website": "https://ebay.com",
+        "location": "San Jose, CA",
+        "companyName": "eBay"
+    },
+    "Instacart": {
+        "icon": "https://logo.clearbit.com/http://instacart.com",
+        "iconGreyscale": "https://logo.clearbit.com/http://instacart.com?greyscale=true",
+        "website": "https://Instacart.com",
+        "location": "San Francisco, CA",
+        "companyName": "Instacart"
+    },
+    "Visa": {
+        "icon": "https://logo.clearbit.com/Visa.com",
+        "iconGreyscale": "https://logo.clearbit.com/Visa.com?greyscale=true",
+        "website": "https://Visa.com",
+        "companyName": "Visa"
+    },
+    "SoFi": {
+        "icon": "https://logo.clearbit.com/SoFi.com",
+        "iconGreyscale": "https://logo.clearbit.com/SoFi.com?greyscale=true",
+        "website": "https://SoFi.com",
+        "companyName": "SoFi"
+    },
+    "Adobe": {
+        "icon": "https://logo.clearbit.com/adobe.io",
+        "iconGreyscale": "https://logo.clearbit.com/adobe.io?greyscale=true",
+        "iconLarge": "https://i.imgur.com/3FNgWq5.png",
+        "website": "https://adobe.com",
+        "location": "San Jose, CA",
+        "companyName": "Adobe"
+    },
+    "Careem": {
+        "icon": "https://logo.clearbit.com/Careem.com",
+        "iconGreyscale": "https://logo.clearbit.com/Careem.com?greyscale=true",
+        "website": "https://Careem.com",
+        "companyName": "Careem"
+    },
+    "Cruise": {
+        "icon": "https://logo.clearbit.com/getcruise.com",
+        "iconGreyscale": "https://logo.clearbit.com/getcruise.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/bBDBwrj.png",
+        "website": "https://getcruise.com",
+        "companyName": "Cruise"
+    },
+    "Roblox": {
+        "icon": "https://logo.clearbit.com/roblox.com",
+        "iconGreyscale": "https://logo.clearbit.com/roblox.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/z1DfQjE.png",
+        "website": "https://roblox.com",
+        "companyName": "Roblox"
+    },
+    "Robinhood": {
+        "icon": "https://logo.clearbit.com/robinhood.com",
+        "iconGreyscale": "https://logo.clearbit.com/robinhood.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/I874yde.png",
+        "website": "https://robinhood.com",
+        "companyName": "Robinhood"
+    },
+    "Shopify": {
+        "icon": "https://logo.clearbit.com/shopify.com",
+        "iconGreyscale": "https://logo.clearbit.com/shopify.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/MjyaEuK.png",
+        "website": "https://shopify.com",
+        "companyName": "Shopify"
+    },
+    "Flipkart": {
+        "icon": "https://logo.clearbit.com/Flipkart.com",
+        "iconGreyscale": "https://logo.clearbit.com/Flipkart.com?greyscale=true",
+        "website": "https://Flipkart.com",
+        "companyName": "Flipkart"
+    },
+    "Broadcom": {
+        "icon": "https://logo.clearbit.com/Broadcom.com",
+        "iconGreyscale": "https://logo.clearbit.com/Broadcom.com?greyscale=true",
+        "website": "https://Broadcom.com",
+        "companyName": "Broadcom"
+    },
+    "Comcast": {
+        "icon": "https://logo.clearbit.com/Comcast.com",
+        "iconGreyscale": "https://logo.clearbit.com/Comcast.com?greyscale=true",
+        "website": "https://Comcast.com",
+        "companyName": "Comcast"
+    },
+    "Opendoor": {
+        "icon": "https://logo.clearbit.com/opendoor.com",
+        "iconGreyscale": "https://logo.clearbit.com/opendoor.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/5fXr0IP.png",
+        "website": "https://opendoor.com",
+        "companyName": "Opendoor",
+        "location": "San Francisco, CA"
+    },
+    "ServiceNow": {
+        "icon": "https://logo.clearbit.com/servicenow.com",
+        "iconGreyscale": "https://logo.clearbit.com/servicenow.com?greyscale=true",
+        "website": "https://servicenow.com",
+        "companyName": "ServiceNow",
+        "location": "Santa Clara, CA"
+    },
+    "Rubrik": {
+        "icon": "https://i.imgur.com/IE6zINV.png",
+        "website": "https://rubrik.com",
+        "companyName": "Rubrik",
+        "location": "Palo Alto, CA"
+    },
+    "Stripe": {
+        "icon": "https://logo.clearbit.com/Stripe.dev",
+        "iconGreyscale": "https://logo.clearbit.com/Stripe.dev?greyscale=true",
+        "iconLarge": "https://i.imgur.com/7734HRo.png",
+        "website": "https://Stripe.com",
+        "location": "San Francisco, CA",
+        "companyName": "Stripe",
+        "topCompany": true
+    },
+    "Slack": {
+        "icon": "http://logo.clearbit.com/Slack.com",
+        "iconGreyscale": "https://logo.clearbit.com/Slack.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/qyuBktt.png",
+        "website": "https://Slack.com",
+        "location": "San Francisco, CA",
+        "companyName": "Slack"
+    },
+    "Quora": {
+        "icon": "https://logo.clearbit.com/Quora.com",
+        "iconGreyscale": "https://logo.clearbit.com/Quora.com?greyscale=true",
+        "website": "https://Quora.com",
+        "location": "Mountain View, CA",
+        "companyName": "Quora"
+    },
+    "Square": {
+        "icon": "https://logo.clearbit.com/sellercommunity.com",
+        "iconGreyscale": "https://logo.clearbit.com/sellercommunity.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/tfpSJ3m.png",
+        "website": "https://square.com",
+        "location": "San Francisco, CA",
+        "companyName": "Square"
+    },
+    "Bloomberg": {
+        "icon": "https://logo.clearbit.com/bloomberg.com",
+        "iconGreyscale": "https://logo.clearbit.com/bloomberg.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/PmHQYrv.png",
+        "website": "https://bloomberg.com",
+        "location": "New York, NY",
+        "companyName": "Bloomberg"
+    },
+    "Cerner": {
+        "icon": "https://logo.clearbit.com/cernerhealthconference.com",
+        "iconGreyscale": "https://logo.clearbit.com/cernerhealthconference.com?greyscale=true",
+        "website": "https://cerner.com",
+        "companyName": "Cerner"
+    },
+    "Walmart Labs": {
+        "iconLarge": "https://i.imgur.com/3DyrLRO.png",
+        "icon": "https://logo.clearbit.com/walmartlabs.com",
+        "iconGreyscale": "https://logo.clearbit.com/walmartlabs.com?greyscale=true",
+        "website": "https://walmartlabs.com",
+        "location": "Mountain View, CA",
+        "companyName": "Walmart Labs"
+    },
+    "Snap": {
+        "icon": "https://logo.clearbit.com/snapchat.com",
+        "iconGreyscale": "https://logo.clearbit.com/snapchat.com?greyscale=true",
+        "website": "https://snap.com",
+        "location": "Santa Monica, CA",
+        "companyName": "Snap",
+        "vesting": {
+            "stockType": "RSU",
+            "additionalDetail": "Monthly vesting, no 1 year cliff",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        },
+        "topCompany": true
+    },
+    "Affirm": {
+        "icon": "https://logo.clearbit.com/affirm.com",
+        "iconGreyscale": "https://logo.clearbit.com/affirm.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/10SwgdJ.png",
+        "website": "https://affirm.com",
+        "location": "San Francisco, CA",
+        "companyName": "Affirm",
+        "vesting": {
+            "stockType": "Options",
+            "schedule": [
+                25,
+                25,
+                25,
+                25
+            ]
+        }
+    },
+    "Electronic Arts": {
+        "icon": "https://logo.clearbit.com/ea.com",
+        "iconGreyscale": "https://logo.clearbit.com/ea.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/bawWtjj.png",
+        "website": "https://ea.com",
+        "location": "Redwood City, CA",
+        "companyName": "Electronic Arts",
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                33,
+                33,
+                33
+            ]
+        }
+    },
+    "Palantir": {
+        "icon": "https://logo.clearbit.com/palantir.com",
+        "iconGreyscale": "https://logo.clearbit.com/palantir.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/wtkaZ30.png",
+        "website": "https://palantir.com",
+        "location": "Palo Alto, CA",
+        "companyName": "Palantir",
+        "vesting": {
+            "stockType": "RSU",
+            "schedule": [
+                20,
+                20,
+                20,
+                20,
+                20
+            ]
+        }
+    },
+    "Twilio": {
+        "icon": "https://logo.clearbit.com/twilio.org",
+        "iconGreyscale": "https://logo.clearbit.com/twilio.org?greyscale=true",
+        "iconLarge": "https://i.imgur.com/o39OQWm.png",
+        "website": "https://twilio.com",
+        "location": "San Francisco, CA",
+        "companyName": "Twilio"
+    },
+    "Okta": {
+        "icon": "https://logo.clearbit.com/okta.com",
+        "iconGreyscale": "https://logo.clearbit.com/okta.com?greyscale=true",
+        "website": "https://okta.com",
+        "location": "San Francisco, CA",
+        "companyName": "Okta"
+    },
+    "PayPal": {
+        "icon": "https://logo.clearbit.com/paypal.com",
+        "iconGreyscale": "https://logo.clearbit.com/paypal.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/h7ETQUw.png",
+        "website": "https://paypal.com",
+        "location": "San Jose, CA",
+        "companyName": "PayPal"
+    },
+    "Workday": {
+        "icon": "https://logo.clearbit.com/workday.com",
+        "iconGreyscale": "https://logo.clearbit.com/workday.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/EBLuuV7.png",
+        "website": "https://workday.com",
+        "location": "Pleasanton, CA",
+        "companyName": "Workday"
+    },
+    "Pivotal": {
+        "icon": "https://logo.clearbit.com/pivotal.io",
+        "iconGreyscale": "https://logo.clearbit.com/pivotal.io?greyscale=true",
+        "website": "https://pivotal.io",
+        "location": "San Francisco, CA",
+        "companyName": "Pivotal"
+    },
+    "Autodesk": {
+        "icon": "https://logo.clearbit.com/autodesk.com",
+        "iconGreyscale": "https://logo.clearbit.com/autodesk.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/MXPjAXp.png",
+        "website": "https://autodesk.com",
+        "companyName": "Autodesk"
+    },
+    "NetApp": {
+        "icon": "https://logo.clearbit.com/netapp.com",
+        "iconGreyscale": "https://logo.clearbit.com/netapp.com?greyscale=true",
+        "website": "https://netapp.com",
+        "companyName": "NetApp"
+    },
+    "Nvidia": {
+        "icon": "https://logo.clearbit.com/nvidia.com",
+        "iconGreyscale": "https://logo.clearbit.com/nvidia.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/fgmmupZ.png",
+        "website": "https://nvidia.com",
+        "companyName": "Nvidia"
+    },
+    "SAP": {
+        "icon": "https://logo.clearbit.com/sap.com",
+        "iconGreyscale": "https://logo.clearbit.com/sap.com?greyscale=true",
+        "website": "https://sap.com",
+        "companyName": "SAP"
+    },
+    "Atlassian": {
+        "icon": "https://logo.clearbit.com/atlassian.com",
+        "iconGreyscale": "https://logo.clearbit.com/atlassian.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/iqNMG8s.png",
+        "website": "https://atlassian.com",
+        "companyName": "Atlassian"
+    },
+    "Twitch": {
+        "icon": "https://logo.clearbit.com/twitch.com",
+        "iconGreyscale": "https://logo.clearbit.com/twitch.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/EsFDXJd.png",
+        "website": "https://twitch.com",
+        "vesting": {
+            "stockType": "RSU",
+            "additionalDetail": "Backloaded vesting schedule, issues Amazon shares",
+            "schedule": [
+                5,
+                15,
+                40,
+                40
+            ]
+        },
+        "companyName": "Twitch"
+    },
+    "Yelp": {
+        "icon": "https://logo.clearbit.com/yelp.com",
+        "iconGreyscale": "https://logo.clearbit.com/yelp.com?greyscale=true",
+        "iconLarge": "https://i.imgur.com/wf0m2xz.png",
+        "website": "https://yelp.com",
+        "location": "San Francisco, CA",
+        "companyName": "Yelp"
+    }
+}

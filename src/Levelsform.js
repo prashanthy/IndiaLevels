@@ -1,8 +1,17 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
+import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
+import companynames from './onlyCompanyName.json';
 
 
 class LevelsForm extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: ''
+        };
+    }
+    
     render(){
         return (
             <Container>
@@ -10,15 +19,18 @@ class LevelsForm extends React.Component{
                     <Col>
                         <Form>
                             <FormGroup>
-                                <Label for="exampleEmail">Company Name</Label>
-                                <Input type="email" name="email" id="exampleEmail" placeholder="Company Name" />
+                                <Label for="companyname">Company Name</Label>
+                                <Typeahead id="companynameId" onChange={(selected) => {
+                                        this.setState({selected});
+                                }}
+                                allowNew
+                                    options={companynames}
+                                    selected={this.state.selected}
+                                    placeholder="Company Name"
+                                />
                             </FormGroup>
                             <FormGroup>
-                                <Input type="text" name="email" id="exampleEmail" placeholder="Level" />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="examplePassword">Password</Label>
-                                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                                <Input type="text" name="level" id="levelId" placeholder="Level" />
                             </FormGroup>
                             <FormGroup>
                                 <Label for="exampleSelect">Select</Label>
@@ -31,6 +43,7 @@ class LevelsForm extends React.Component{
                                 </Input>
                             </FormGroup>
                             <FormGroup>
+                            <Label for="amount">Total Compensation</Label>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
                                 <Input placeholder="Amount" min={0} max={100} type="number" step="1" />
