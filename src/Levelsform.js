@@ -43,6 +43,7 @@ class LevelsForm extends React.Component{
                                 </Input>
                             </FormGroup>
                             <FormGroup>
+                            <Label for="amount">Total Compensation</Label>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
                                 <Input placeholder="Amount" min={0} max={100} type="number" step="1" />
