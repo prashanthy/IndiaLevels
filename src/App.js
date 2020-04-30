@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'reactstrap';
 import LevelsForm from './Levelsform';
+import {Navbar, NavbarBrand} from 'reactstrap'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <div style={{textAlign:'center'}}>
-          <Button color="primary" onClick={this.handleClick}>Check Console</Button>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">India Levels.fyi</NavbarBrand>
+
+          </Navbar>
         </div>
         <LevelsForm />
       </div>
