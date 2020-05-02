@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Navbar, NavbarBrand } from 'reactstrap';
 import LevelsForm from './Levelsform';
-import {Navbar, NavbarBrand} from 'reactstrap'
 
 
 class App extends React.Component {
