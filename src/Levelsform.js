@@ -1,16 +1,18 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
+import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import companynames from './onlyCompanyName.json';
 import cities from './finalListOfCities.json';
-
 
 class LevelsForm extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             companyNameSelected: '', 
-            location:''
+            location:'', 
+            dropdownOpen: '', 
+            rsuText: 'Lakhs'
         };
     }
     
@@ -63,9 +65,14 @@ class LevelsForm extends React.Component{
                             <FormGroup>
                             <Label for="amount">Stock Grant Value (avg/year)</Label>
                             <InputGroup>
-                                <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                <InputGroupAddon addonType="prepend">
+                                <Input type="select" name="select" id="exampleSelect">
+                                    <option>₹</option>
+                                    <option>$</option>
+                                </Input>
+                                </InputGroupAddon>
                                 <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1" />
-                                <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
                             </InputGroup>
                             </FormGroup>
                             <FormGroup>
