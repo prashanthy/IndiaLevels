@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import companynames from './onlyCompanyName.json';
 import cities from './finalListOfCities.json';
@@ -11,11 +10,32 @@ class LevelsForm extends React.Component{
         this.state = {
             companyNameSelected: '', 
             location:'', 
-            dropdownOpen: '', 
+            dropdownOpen: false, 
             rsuText: 'Lakhs'
         };
+        this.toggleDropDown = this.toggleDropDown.bind(this);
+        this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
     }
     
+    toggleDropDown(params){
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+
+    handleCurrencyChange(e) {
+        if(e.target.value === "$"){
+            this.setState({
+                rsuText: 'Dollars'
+            });
+        } 
+        else if(e.target.value === "₹"){
+            this.setState({
+                rsuText: 'Dollars'
+            });
+        } 
+    }
+
     render(){
         return (
             <Container>
@@ -66,10 +86,10 @@ class LevelsForm extends React.Component{
                             <Label for="amount">Stock Grant Value (avg/year)</Label>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">
-                                <Input type="select" name="select" id="exampleSelect">
-                                    <option>₹</option>
-                                    <option>$</option>
-                                </Input>
+                                    <Input type="select" name="select" id="exampleSelect" onChange={this.handleCurrencyChange}>
+                                        <option>₹</option>
+                                        <option>$</option>
+                                    </Input>
                                 </InputGroupAddon>
                                 <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1" />
                                 <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
@@ -83,7 +103,11 @@ class LevelsForm extends React.Component{
                                 <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                             </InputGroup>
                             </FormGroup>
-                        <Button color="primary">Submit</Button>
+                            <p className="textCenter">
+                                <Button color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                    Submit
+                                </Button>
+                            </p>
                         </Form>
                     </Col>
                 </Row>
