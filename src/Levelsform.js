@@ -24,6 +24,7 @@ class LevelsForm extends React.Component{
     }
 
     handleCurrencyChange(e) {
+        debugger
         if(e.target.value === "$"){
             this.setState({
                 rsuText: 'Dollars'
@@ -31,7 +32,7 @@ class LevelsForm extends React.Component{
         } 
         else if(e.target.value === "₹"){
             this.setState({
-                rsuText: 'Dollars'
+                rsuText: 'Lakhs'
             });
         } 
     }
