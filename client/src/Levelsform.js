@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input, Container, Row, Col, InputGroup,
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import companynames from './onlyCompanyName.json';
 import cities from './finalListOfCities.json';
+import levels from './levelsInfo.json';
 
 class LevelsForm extends React.Component{
     constructor(props) {
@@ -21,7 +22,8 @@ class LevelsForm extends React.Component{
                     yearsAtCompany:''
             },
             dropdownOpen: false, 
-            rsuText: 'Lakhs'
+            rsuText: 'Lakhs', 
+            actualLevels: []
         };
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
@@ -59,9 +61,9 @@ class LevelsForm extends React.Component{
                     <Col>
                         <Form>
                             <FormGroup>
-                                <Label for="companyname">Company Name</Label>
                                 <Typeahead id="companynameId" onChange={(companyNameSelected) => {
                                         this.setState({companyNameSelected});
+                                        this.setState({actualLevels: levels})
                                 }}
                                 allowNew
                                     options={companynames.sort()}
@@ -70,8 +72,8 @@ class LevelsForm extends React.Component{
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label for="jobTitleId">Job Title</Label>
                                 <Input type="select" name="select" id="jobTitleId">
+                                <option defaultValue={true} disabled="disabled">Select Job Title</option>    
                                 <option>Software Engineer</option>
                                 <option>Software Engineering Manager</option>
                                 <option>Product Manager</option>
