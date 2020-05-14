@@ -49,7 +49,7 @@ class LevelsForm extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
+        // const data = new FormData(event.target);
     }
 
     render(){
@@ -68,6 +68,17 @@ class LevelsForm extends React.Component{
                                     selected={this.state.companyNameSelected}
                                     placeholder="Company Name"
                                 />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label for="jobTitleId">Job Title</Label>
+                                <Input type="select" name="select" id="jobTitleId">
+                                <option>Software Engineer</option>
+                                <option>Software Engineering Manager</option>
+                                <option>Product Manager</option>
+                                <option>Data Scientist</option>
+                                <option>Investment Banker</option>
+                                <option>Other</option>
+                                </Input>
                             </FormGroup>
                             <FormGroup>
                                 <Input type="text" name="level" id="levelId" placeholder="Level" />
