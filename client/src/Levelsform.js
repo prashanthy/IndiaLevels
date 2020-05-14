@@ -8,13 +8,24 @@ class LevelsForm extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            companyNameSelected: '', 
-            location:'', 
+                newSalaryInfo: {
+                    companyNameSelected: '', 
+                    location:'', 
+                    level:'',
+                    jobTitle: '',
+                    totalCompensation:'',
+                    baseSalary: '',
+                    stockGrantValue: '',
+                    bonus:'',
+                    yoe:'',
+                    yearsAtCompany:''
+            },
             dropdownOpen: false, 
             rsuText: 'Lakhs'
         };
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     toggleDropDown(params){
@@ -34,6 +45,11 @@ class LevelsForm extends React.Component{
                 rsuText: 'Lakhs'
             });
         } 
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
     }
 
     render(){
@@ -104,7 +120,7 @@ class LevelsForm extends React.Component{
                             </InputGroup>
                             </FormGroup>
                             <p className="textCenter">
-                                <Button color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                <Button onSubmit={this.handleSubmit} type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                     Submit
                                 </Button>
                             </p>
