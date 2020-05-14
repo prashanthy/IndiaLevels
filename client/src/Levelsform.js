@@ -64,7 +64,7 @@ class LevelsForm extends React.Component{
                                         this.setState({companyNameSelected});
                                 }}
                                 allowNew
-                                    options={companynames}
+                                    options={companynames.sort()}
                                     selected={this.state.companyNameSelected}
                                     placeholder="Company Name"
                                 />
@@ -77,7 +77,7 @@ class LevelsForm extends React.Component{
                                         this.setState({selected});
                                 }}
                                 allowNew
-                                    options={cities}
+                                    options={cities.sort()}
                                     selected={this.state.location}
                                     placeholder="Location"
                                 />
