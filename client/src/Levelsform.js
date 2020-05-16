@@ -83,7 +83,6 @@ class LevelsForm extends React.Component{
 
     saveLevelChange(event) {
         let value = event[0];
-        console.log("Inside Level Save");
         this.setState(
             prevState => ({
                 newSalaryInfo: {
@@ -110,35 +109,22 @@ class LevelsForm extends React.Component{
                 actualLevelsArray : finalLevels
             });
         }
-        console.log(this.state.newSalaryInfo);
     }
 
     handleGenericChange(event) {
-        // let name = event.target.id;
-        console.log("Inside Job Title Change");
         let value = event.target.value;
         var tempObj = this.state.newSalaryInfo;
         tempObj.jobTitle = value;
-
         this.setState({newSalaryInfo: tempObj});
-        console.log(this.state.newSalaryInfo);
         this.changeLevels();
     }
 
     handleLocationChange(locationName) {
         let value = locationName[0];
-        this.setState(
-            prevState => ({
-                newSalaryInfo: {
-                    ...prevState.newSalaryInfo,
-                    location: value
-                }
-            }),
-            () => console.log(this.state.newUser)
-        );
-    }
-
-    
+        var tempObj = this.state.newSalaryInfo;
+        tempObj.location = value;
+        this.setState({newSalaryInfo: tempObj});
+    }    
 
     render(){
         return (
