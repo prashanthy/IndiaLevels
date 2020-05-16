@@ -23,11 +23,14 @@ class LevelsForm extends React.Component{
             },
             dropdownOpen: false, 
             rsuText: 'Lakhs', 
-            actualLevels: []
+            actualLevels: levels
         };
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCompanyChange = this.handleCompanyChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleLevelChange = this.handleLevelChange.bind(this);
     }
     
     toggleDropDown(params){
@@ -51,8 +54,61 @@ class LevelsForm extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        // const data = new FormData(event.target);
+        const data = new FormData(event.target);
+        debugger;
     }
+
+    handleCompanyChange(event) {
+        let value = event[0];
+        this.setState(
+            prevState => ({
+                newSalaryInfo: {
+                    ...prevState.newSalaryInfo,
+                    companyNameSelected: value
+                }
+            }),
+            () => console.log(this.state.newUser)
+        );
+    }
+
+    handleLevelChange(event) {
+        debugger
+        let value = event[0];
+        this.setState(
+            prevState => ({
+                newSalaryInfo: {
+                    ...prevState.newSalaryInfo,
+                    level: value
+                }
+            }),
+            () => console.log(this.state.newUser)
+        );
+    }
+
+    handleTitleChange(event) {
+        let value = event.target.value;
+        this.setState(
+            prevState => ({
+                newSalaryInfo: {
+                    ...prevState.newSalaryInfo,
+                    jobTitle: value
+                }
+            }),
+            () => console.log(this.state.newUser)
+        );
+        debugger
+        var newLevels = this.state.actualLevels;
+        newLevels = newLevels[value][this.state.newSalaryInfo["companyNameSelected"]]
+        this.setState(
+            prevState => ({
+                newSalaryInfo: {
+                    ...prevState.newSalaryInfo,
+                    actualLevels : newLevels
+                }
+            })
+        )
+    }
+
 
     render(){
         return (
@@ -61,10 +117,7 @@ class LevelsForm extends React.Component{
                     <Col>
                         <Form>
                             <FormGroup>
-                                <Typeahead id="companynameId" onChange={(companyNameSelected) => {
-                                        this.setState({companyNameSelected});
-                                        this.setState({actualLevels: levels})
-                                }}
+                                <Typeahead id="companynameId" onChange={this.handleCompanyChange}
                                 allowNew
                                     options={companynames.sort()}
                                     selected={this.state.companyNameSelected}
@@ -72,8 +125,8 @@ class LevelsForm extends React.Component{
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Input type="select" name="select" id="jobTitleId">
-                                <option defaultValue={true} disabled="disabled">Select Job Title</option>    
+                                <Input type="select" name="select" id="jobTitleId" onChange={this.handleTitleChange}>
+                                <option selected="selected" disabled="disabled">Select Job Title</option>    
                                 <option>Software Engineer</option>
                                 <option>Software Engineering Manager</option>
                                 <option>Product Manager</option>
@@ -83,7 +136,11 @@ class LevelsForm extends React.Component{
                                 </Input>
                             </FormGroup>
                             <FormGroup>
-                                <Input type="text" name="level" id="levelId" placeholder="Level" />
+                                <Typeahead id="levelId" onChange={this.handleLevelChange}
+                                    allowNew
+                                    options={this.state.actualLevels}
+                                    selected={this.state.level}
+                                    placeholder="Level" />
                             </FormGroup>
                             <FormGroup>
                             <Typeahead id="locationId" onChange={(selected) => {
