@@ -96,10 +96,10 @@ class LevelsForm extends React.Component{
 
     changeLevels(){
         var newLevels = this.state.actualLevelsObj;
-        if(!this.state.newSalaryInfo["companyNameSelected"] || !this.state.newSalaryInfo["jobTitle"]){
+        if(!this.state.newSalaryInfo.companyNameSelected || !this.state.newSalaryInfo.jobTitle){
             return;
         }
-        newLevels = newLevels[this.state.newSalaryInfo["jobTitle"]][this.state.newSalaryInfo["companyNameSelected"]];
+        newLevels = newLevels[this.state.newSalaryInfo.jobTitle][this.state.newSalaryInfo.companyNameSelected];
         var finalLevels = [];
         if(newLevels){
             for (let [key, newLevelValue] of Object.entries(newLevels)) {
