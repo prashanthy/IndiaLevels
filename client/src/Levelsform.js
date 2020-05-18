@@ -143,6 +143,9 @@ class LevelsForm extends React.Component{
     render(){
         return (
             <Container>
+                <h2 className="text-center">
+                    Add Your Compensation
+                </h2>
                 <Row>
                     <Col>
                         <Form>
@@ -152,16 +155,18 @@ class LevelsForm extends React.Component{
                                     options={companynames.sort()}
                                     defaultValue={this.state.companyNameSelected}
                                     placeholder="Company Name"
-                                />
+                                    bsSize="lg"/>
                             </FormGroup>
                             <FormGroup>
-                                <Input type="select" name="select" id="jobTitle" onChange={this.handleGenericChange}>
+                                <Input type="select" name="select" id="jobTitle" onChange={this.handleGenericChange} bsSize="lg">
                                 <option selected="selected" disabled="disabled">Select Job Title</option>    
                                 <option>Software Engineer</option>
                                 <option>Software Engineering Manager</option>
                                 <option>Product Manager</option>
                                 <option>Data Scientist</option>
                                 <option>Technical Program Manager</option>
+                                <option>Hardware Engineer</option>
+                                <option>Hardware Engineering Manager</option>
                                 <option>Investment Banker</option>
                                 <option>Other</option>
                                 </Input>
@@ -171,21 +176,21 @@ class LevelsForm extends React.Component{
                                     allowNew
                                     options={this.state.actualLevelsArray}
                                     selected={this.state.level}
-                                    placeholder="Level" />
+                                    placeholder="Level" bsSize="lg"/>
                             </FormGroup>
                             <FormGroup>
                             <Typeahead id="location" onChange={this.handleLocationChange}
                                 allowNew
                                     options={cities.sort()}
                                     selected={this.state.location}
-                                    placeholder="Location"
+                                    placeholder="Location" bsSize="lg"
                                 />
                             </FormGroup>
                             <FormGroup>
                             <Label for="amount">Total Compensation</Label>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" />
+                                <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg"/>
                                 <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                             </InputGroup>
                             </FormGroup>
@@ -193,7 +198,7 @@ class LevelsForm extends React.Component{
                             <Label for="amount">Base Salary</Label>
                             <InputGroup>
                                 <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                <Input placeholder="Base Salary" min={0} max={100} type="number" step="1" />
+                                <Input placeholder="Base Salary" min={0} max={100} type="number" step="1" bsSize="lg"/>
                                 <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                             </InputGroup>
                             </FormGroup>
@@ -218,6 +223,18 @@ class LevelsForm extends React.Component{
                                 <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                             </InputGroup>
                             </FormGroup>
+                            <Row form>
+                                <Col md={6}>
+                                <FormGroup>
+                                    <Input type="text" name="email" id="exampleEmail" placeholder="Years at the company" />
+                                </FormGroup>
+                                </Col>
+                                <Col md={6}>
+                                <FormGroup>
+                                    <Input type="text" name="password" id="examplePassword" placeholder="Years of experience" />
+                                </FormGroup>
+                                </Col>
+                            </Row>
                             <p className="textCenter">
                                 <Button onSubmit={this.handleSubmit} type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                     Submit

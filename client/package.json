@@ -23,7 +23,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://prashanthy.github.io/indialevels",
+  "homepage": "https://prashanthy.github.io/",
   "proxy": "http://localhost:5000/",
   "browserslist": {
     "production": [
