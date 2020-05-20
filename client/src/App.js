@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import LevelsForm from './Levelsform';
+import LevelsForm from './components/Levelsform';
 
 
 class App extends React.Component {

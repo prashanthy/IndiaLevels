@@ -1,16 +1,17 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
-import companynames from './onlyCompanyName.json';
-import cities from './finalListOfCities.json';
-import levels from './levelsInfo.json';
+import companynames from '../onlyCompanyName.json';
+// import cities from '../finalListOfCities.json';
+// import fullcities from '../cities.json';
+import levels from '../levelsInfo.json';
 
 class LevelsForm extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
                 newSalaryInfo: {
-                    companyNameSelected: '', 
+                    companyName: '', 
                     location:'', 
                     level:'',
                     jobTitle: 'selectOne',
@@ -32,7 +33,8 @@ class LevelsForm extends React.Component{
                 "datascientist": "Data Scientist", 
                 "investmentbanker": "Investment Banker", 
                 "technicalprogrammanager": "Technical Program Manager"
-            }
+            }, 
+            cities : []
         };
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
@@ -42,6 +44,7 @@ class LevelsForm extends React.Component{
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.saveLevelChange = this.saveLevelChange.bind(this);
         this.changeLevels = this.changeLevels.bind(this);
+        this.handleBaseSalaryChange = this.handleBaseSalaryChange.bind(this);
     }
     
     toggleDropDown(params){
@@ -63,15 +66,43 @@ class LevelsForm extends React.Component{
         } 
     }
 
+    componentDidMount(){
+        debugger;
+        fetch("/cities", {
+            method:"GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              }
+        }).then(response => {
+            response.json().then(data => {
+                this.setState({cities: data});
+                console.log(data);
+            });
+        });
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
+        let salaryInfo = this.state.newSalaryInfo;
+        fetch("/post-test", {
+          method: "POST",
+          body: JSON.stringify(salaryInfo),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          }
+        }).then(response => {
+          response.json().then(data => {
+            console.log("Successful" + data.username);
+          });
+        });
     }
 
     handleCompanyChange(event) {
         let value = event[0];
         var tempObj = this.state.newSalaryInfo;
-        tempObj.companyNameSelected = value;
+        tempObj.companyName = value;
 
         this.setState({newSalaryInfo: tempObj});
         console.log("Inside Company Change");
@@ -90,12 +121,12 @@ class LevelsForm extends React.Component{
 
     changeLevels(){
         var newLevels = this.state.actualLevelsObj;
-        if(!this.state.newSalaryInfo.companyNameSelected || this.state.newSalaryInfo.jobTitle === "selectOne"){
+        if(!this.state.newSalaryInfo.companyName || this.state.newSalaryInfo.jobTitle === "selectOne"){
             return;
         }
         var title = this.state.titleMapping[this.state.newSalaryInfo.jobTitle]
-        if (title && newLevels[title] && newLevels[title][this.state.newSalaryInfo.companyNameSelected]) {
-            newLevels = newLevels[title][this.state.newSalaryInfo.companyNameSelected];    
+        if (title && newLevels[title] && newLevels[title][this.state.newSalaryInfo.companyName]) {
+            newLevels = newLevels[title][this.state.newSalaryInfo.companyName];    
         } else {
             newLevels = [];
         }
@@ -126,17 +157,25 @@ class LevelsForm extends React.Component{
         this.setState({newSalaryInfo: tempObj});
     }    
 
+    handleBaseSalaryChange(baseSalary){
+        let name = baseSalary.target.name;
+        let value = baseSalary.target.value;
+        var tempObj = this.state.newSalaryInfo;
+        tempObj[name] = value;
+        this.setState({newSalaryInfo: tempObj});
+    }
+
     render(){
         return (
             <Container>
                 <Row>
                     <Col>
-                        <Form>
+                        <Form onSubmit={this.handleSubmit}>
                             <FormGroup>
                                 <Typeahead id="companynameId" onChange={this.handleCompanyChange}
                                 allowNew
                                     options={companynames.sort()}
-                                    defaultValue={this.state.companyNameSelected}
+                                    defaultValue={this.state.companyName}
                                     placeholder="Company Name"
                                     size="lg"
                                 />
@@ -163,7 +202,7 @@ class LevelsForm extends React.Component{
                             <FormGroup>
                             <Typeahead id="location" onChange={this.handleLocationChange} size="lg"
                                 allowNew
-                                    options={cities.sort()}
+                                    options={this.calculateCities}
                                     selected={this.state.location}
                                     placeholder="Location"
                                 />
@@ -172,7 +211,7 @@ class LevelsForm extends React.Component{
                                 <Label for="amount">Total Compensation</Label>
                                 <InputGroup>
                                     <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                    <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg"/>
+                                    <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg" name="totalCompensation" onChange={this.handleBaseSalaryChange}/>
                                     <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                                 </InputGroup>
                             </FormGroup>
@@ -180,7 +219,7 @@ class LevelsForm extends React.Component{
                                 <Label for="amount">Base Salary</Label>
                                 <InputGroup>
                                     <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                    <Input placeholder="Base Salary" min={0} max={100} type="number" step="1" bsSize="lg"/>
+                                    <Input placeholder="Base Salary" min={0} max={100} type="number"name="baseSalary"  step="1" bsSize="lg" onChange={this.handleBaseSalaryChange}/>
                                     <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                                 </InputGroup>
                             </FormGroup>
@@ -195,7 +234,7 @@ class LevelsForm extends React.Component{
                                                     <option>$</option>
                                                 </Input>
                                             </InputGroupAddon>
-                                            <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1" />
+                                            <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1"  onChange={this.handleBaseSalaryChange} name="stockGrantValue"/>
                                             <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
                                         </InputGroup>
                                     </FormGroup>
@@ -205,7 +244,7 @@ class LevelsForm extends React.Component{
                                         <Label for="amount">Bonus (avg/year)</Label>
                                         <InputGroup>
                                             <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                            <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1" />
+                                            <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1"onChange={this.handleBaseSalaryChange} name="bonus" />
                                             <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
                                         </InputGroup>
                                     </FormGroup>        
@@ -215,18 +254,18 @@ class LevelsForm extends React.Component{
                                 <Col md={6}>
                                 <FormGroup>
                                     <Label for="yoeAtCompany">Years at the Company</Label>
-                                    <Input type="text" name="yoeAtCompanyName" id="yoeAtCompany" placeholder="Years at the Company" />
+                                    <Input type="text" name="yearsAtCompany" id="yoeAtCompany" placeholder="Years at the Company" onChange={this.handleBaseSalaryChange}/>
                                 </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                 <FormGroup>
                                     <Label for="totalYoe">Years of Experience</Label>
-                                    <Input type="text" name="yoeName" id="totalYoe" placeholder="Years of Experience" />
+                                    <Input type="text" name="yoe" id="totalYoe" placeholder="Years of Experience" onChange={this.handleBaseSalaryChange}/>
                                 </FormGroup>
                                 </Col>
                             </Row>
                             <p className="textCenter">
-                                <Button onSubmit={this.handleSubmit} type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                <Button type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                     Submit
                                 </Button>
                             </p>
