@@ -13,7 +13,7 @@ class LevelsForm extends React.Component{
                     companyNameSelected: '', 
                     location:'', 
                     level:'',
-                    jobTitle: '',
+                    jobTitle: 'selectOne',
                     totalCompensation:'',
                     baseSalary: '',
                     stockGrantValue: '',
@@ -24,13 +24,21 @@ class LevelsForm extends React.Component{
             dropdownOpen: false, 
             rsuText: 'Lakhs', 
             actualLevelsObj: levels,
-            actualLevelsArray: []
+            actualLevelsArray: [],
+            titleMapping: {
+                "softwareengineer": "Software Engineer", 
+                "softwareengineeringmanager": "Software Engineering Manager", 
+                "productmanager": "Product Manager", 
+                "datascientist": "Data Scientist", 
+                "investmentbanker": "Investment Banker", 
+                "technicalprogrammanager": "Technical Program Manager"
+            }
         };
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCompanyChange = this.handleCompanyChange.bind(this);
-        this.handleGenericChange = this.handleGenericChange.bind(this);
+        this.handleJobTitleChange = this.handleJobTitleChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.saveLevelChange = this.saveLevelChange.bind(this);
         this.changeLevels = this.changeLevels.bind(this);
@@ -68,38 +76,30 @@ class LevelsForm extends React.Component{
         this.setState({newSalaryInfo: tempObj});
         console.log("Inside Company Change");
         console.log(this.state.newSalaryInfo);
-
-        // this.setState(
-        //     prevState => ({
-        //         newSalaryInfo: {
-        //             ...prevState.newSalaryInfo,
-        //             companyNameSelected: value
-        //         }
-        //     }),
-        //     () => console.log(this.state.newSalaryInfo)
-        // );
         this.changeLevels();
     }
 
     saveLevelChange(event) {
         let value = event[0];
-        this.setState(
-            prevState => ({
-                newSalaryInfo: {
-                    ...prevState.newSalaryInfo,
-                    level: value
-                }
-            }),
-            () => console.log(this.state.newSalaryInfo)
-        );
+        var tempObj = this.state.newSalaryInfo;
+        tempObj.level = value;
+        this.setState({newSalaryInfo: tempObj});
+        console.log("Inside Company Change");
+        console.log(this.state.newSalaryInfo);
     }
 
     changeLevels(){
         var newLevels = this.state.actualLevelsObj;
-        if(!this.state.newSalaryInfo.companyNameSelected || !this.state.newSalaryInfo.jobTitle){
+        if(!this.state.newSalaryInfo.companyNameSelected || this.state.newSalaryInfo.jobTitle === "selectOne"){
             return;
         }
-        newLevels = newLevels[this.state.newSalaryInfo.jobTitle][this.state.newSalaryInfo.companyNameSelected];
+        var title = this.state.titleMapping[this.state.newSalaryInfo.jobTitle]
+        if (title && newLevels[title] && newLevels[title][this.state.newSalaryInfo.companyNameSelected]) {
+            newLevels = newLevels[title][this.state.newSalaryInfo.companyNameSelected];    
+        } else {
+            newLevels = [];
+        }
+        
         var finalLevels = [];
         if(newLevels){
             for (let [key, newLevelValue] of Object.entries(newLevels)) {
@@ -111,7 +111,7 @@ class LevelsForm extends React.Component{
         }
     }
 
-    handleGenericChange(event) {
+    handleJobTitleChange(event) {
         let value = event.target.value;
         var tempObj = this.state.newSalaryInfo;
         tempObj.jobTitle = value;
@@ -138,28 +138,30 @@ class LevelsForm extends React.Component{
                                     options={companynames.sort()}
                                     defaultValue={this.state.companyNameSelected}
                                     placeholder="Company Name"
+                                    size="lg"
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Input type="select" name="select" id="jobTitle" onChange={this.handleGenericChange}>
-                                <option selected="selected" disabled="disabled">Select Job Title</option>    
-                                <option>Software Engineer</option>
-                                <option>Software Engineering Manager</option>
-                                <option>Product Manager</option>
-                                <option>Data Scientist</option>
-                                <option>Investment Banker</option>
-                                <option>Other</option>
+                                <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleJobTitleChange} bsSize="lg">
+                                    <option value="selectOne" disabled>Select Job Title</option>    
+                                    <option value="softwareengineer">Software Engineer</option>
+                                    <option value="softwareengineeringmanager">Software Engineering Manager</option>
+                                    <option value="productmanager">Product Manager</option>
+                                    <option value="datascientist">Data Scientist</option>
+                                    <option value="investmentbanker">Investment Banker</option>
+                                    <option value="technicalprogrammanager">Technical Program Manager</option>
+                                    <option value="other">Other</option>
                                 </Input>
                             </FormGroup>
                             <FormGroup>
-                                <Typeahead id="levelId" onChange={this.saveLevelChange}
+                                <Typeahead id="levelId" onChange={this.saveLevelChange} size="lg"
                                     allowNew
                                     options={this.state.actualLevelsArray}
                                     selected={this.state.level}
                                     placeholder="Level" />
                             </FormGroup>
                             <FormGroup>
-                            <Typeahead id="location" onChange={this.handleLocationChange}
+                            <Typeahead id="location" onChange={this.handleLocationChange} size="lg"
                                 allowNew
                                     options={cities.sort()}
                                     selected={this.state.location}
@@ -167,42 +169,62 @@ class LevelsForm extends React.Component{
                                 />
                             </FormGroup>
                             <FormGroup>
-                            <Label for="amount">Total Compensation</Label>
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" />
-                                <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
-                            </InputGroup>
+                                <Label for="amount">Total Compensation</Label>
+                                <InputGroup>
+                                    <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                    <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg"/>
+                                    <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                </InputGroup>
                             </FormGroup>
                             <FormGroup>
-                            <Label for="amount">Base Salary</Label>
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                <Input placeholder="Base Salary" min={0} max={100} type="number" step="1" />
-                                <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
-                            </InputGroup>
+                                <Label for="amount">Base Salary</Label>
+                                <InputGroup>
+                                    <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                    <Input placeholder="Base Salary" min={0} max={100} type="number" step="1" bsSize="lg"/>
+                                    <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                </InputGroup>
                             </FormGroup>
-                            <FormGroup>
-                            <Label for="amount">Stock Grant Value (avg/year)</Label>
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">
-                                    <Input type="select" name="select" id="exampleSelect" onChange={this.handleCurrencyChange}>
-                                        <option>₹</option>
-                                        <option>$</option>
-                                    </Input>
-                                </InputGroupAddon>
-                                <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1" />
-                                <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
-                            </InputGroup>
-                            </FormGroup>
-                            <FormGroup>
-                            <Label for="amount">Bonus (avg/year)</Label>
-                            <InputGroup>
-                                <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1" />
-                                <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
-                            </InputGroup>
-                            </FormGroup>
+                            <Row form>
+                                <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="amount">Stock Grant Value (avg/year)</Label>
+                                        <InputGroup>
+                                            <InputGroupAddon addonType="prepend">
+                                                <Input type="select" name="select" id="exampleSelect" onChange={this.handleCurrencyChange}>
+                                                    <option>₹</option>
+                                                    <option>$</option>
+                                                </Input>
+                                            </InputGroupAddon>
+                                            <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1" />
+                                            <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
+                                        </InputGroup>
+                                    </FormGroup>
+                                </Col>
+                                <Col md={6}>
+                                    <FormGroup>
+                                        <Label for="amount">Bonus (avg/year)</Label>
+                                        <InputGroup>
+                                            <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                            <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1" />
+                                            <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                        </InputGroup>
+                                    </FormGroup>        
+                                </Col>
+                            </Row>
+                            <Row form>
+                                <Col md={6}>
+                                <FormGroup>
+                                    <Label for="yoeAtCompany">Years at the Company</Label>
+                                    <Input type="text" name="yoeAtCompanyName" id="yoeAtCompany" placeholder="Years at the Company" />
+                                </FormGroup>
+                                </Col>
+                                <Col md={6}>
+                                <FormGroup>
+                                    <Label for="totalYoe">Years of Experience</Label>
+                                    <Input type="text" name="yoeName" id="totalYoe" placeholder="Years of Experience" />
+                                </FormGroup>
+                                </Col>
+                            </Row>
                             <p className="textCenter">
                                 <Button onSubmit={this.handleSubmit} type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                     Submit
