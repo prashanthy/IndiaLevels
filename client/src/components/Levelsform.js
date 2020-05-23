@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Label, Input, Container, Row, Col, InputGroup,
 import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
 import companynames from '../onlyCompanyName.json';
 import fullcities from '../finalListOfCities.json';
-// import fullcities from '../cities.json';
 import levels from '../levelsInfo.json';
 
 class LevelsForm extends React.Component{
@@ -99,21 +98,23 @@ class LevelsForm extends React.Component{
     }
 
     handleCompanyChange(event) {
-        let value = typeof(event[0]) === Array ? event[0] : event[0].label;
-        var tempObj = this.state.newSalaryInfo;
-        tempObj.companyName = value;
-        this.setState({newSalaryInfo: tempObj});
-        this.changeLevels();
+        debugger;
+        if(event && event.length > 0){
+            let value = typeof(event[0]) === "string" ? event[0] : event[0].label;
+            var tempObj = this.state.newSalaryInfo;
+            tempObj.companyName = value;
+            this.setState({newSalaryInfo: tempObj});
+            this.changeLevels();
+        }
     }
 
     saveLevelChange(event) {
-        let value = typeof(event[0]) === Array ? event[0] : event[0].label;
-        // let value = event[0];
-        var tempObj = this.state.newSalaryInfo;
-        tempObj.level = value;
-        this.setState({newSalaryInfo: tempObj});
-        console.log("Inside Company Change");
-        console.log(this.state.newSalaryInfo);
+        if(event && event.length > 0){
+            let value = typeof(event[0]) === "string" ? event[0] : event[0].label;
+            var tempObj = this.state.newSalaryInfo;
+            tempObj.level = value;
+            this.setState({newSalaryInfo: tempObj});
+        }
     }
 
     changeLevels(){
@@ -140,6 +141,7 @@ class LevelsForm extends React.Component{
     }
 
     handleJobTitleChange(event) {
+        debugger
         let value = event.target.value;
         var tempObj = this.state.newSalaryInfo;
         tempObj.jobTitle = value;
