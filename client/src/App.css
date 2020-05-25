@@ -34,17 +34,22 @@
 
 .radio-toolbar label {
   display: inline-block;
-  background-color: #ddd;
+  background-color: rgb(246, 249, 250);
   padding: 10px 20px;
   font-family: sans-serif, Arial;
   font-size: 16px;
-  border: 2px solid #444;
+  border: 2px solid rgb(163, 167, 166);
   border-radius: 4px;
 }
 
 .radio-toolbar input[type="radio"]:checked + label {
   background-color:#bfb;
   border-color: #4c4;
+}
+
+.radio-toolbar input[type="radio"]:not(:checked) + label {
+  background-color: rgb(246, 249, 250);
+  /* border-color: #4c4; */
 }
 
 .radio-toolbar input[type="radio"]:focus + label {

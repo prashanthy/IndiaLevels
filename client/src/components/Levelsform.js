@@ -267,18 +267,18 @@ class LevelsForm extends React.Component{
                                 Optional
                             </div>
                             <Row form>
-                                <div className="radio-toolbar">
-                                    <Col md={6}>
-                                        <input type="radio" id="radioApple" name="radioFruit" value="apple"/>
-                                        <label for="radioApple">Male</label>
+                                <div className="radio-toolbar" style={{display:"inherit", margin:"0 auto"}}>
+                                    <Col md={4}>
+                                        <input type="radio" id="radioMale" name="radioMale" value="male"/>
+                                        <label for="radioMale">Male</label>
                                     </Col>
-                                    <Col md={6}>
-                                        <input type="radio" id="radioBanana" name="radioFruit" value="banana" />
-                                        <label for="radioBanana">Female</label>
+                                    <Col md={4}>
+                                        <input type="radio" id="radioFemale" name="radioFemale" value="female" />
+                                        <label for="radioFemale">Female</label>
                                     </Col>
-                                    <Col md={6}>
-                                        <input type="radio" id="radioOrange" name="radioFruit" value="orange" />
-                                        <label for="radioOrange">Other</label> 
+                                    <Col md={4}>
+                                        <input type="radio" id="radioOther" name="radioOther" value="other" />
+                                        <label for="radioOther">Other</label> 
                                     </Col>
                                 </div>
                             </Row>

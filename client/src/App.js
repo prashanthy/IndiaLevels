@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import LevelsForm from './components/Levelsform';
+import { Button, Row, Col } from 'reactstrap';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,9 +36,14 @@ class App extends React.Component {
           <NavbarBrand className="mx-auto" href="/" style={{color:'white'}}>India Levels.fyi</NavbarBrand>
         </Navbar>
         <br/>
-        
+
+        <Row>
+          <Col md={6}>
+            <Link to="/compdata"><Button>Comp Data</Button></Link>
+          </Col>
+        </Row>
         <Switch>
-          <Route path="/maindata">
+          <Route path="/compdata">
             <Maindata />
           </Route>
           <Route path="/">
