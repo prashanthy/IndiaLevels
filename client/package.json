@@ -10,6 +10,8 @@
     "react": "^16.13.1",
     "react-bootstrap-typeahead": "^4.2.2",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1"
   },
@@ -23,7 +25,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "homepage": "https://prashanthy.github.io/",
+  "homepage": "https://prashanthy.github.io",
   "proxy": "http://localhost:5000/",
   "browserslist": {
     "production": [
