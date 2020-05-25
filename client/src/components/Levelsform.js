@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Container, Row, Col, InputGroup, InputGroupAddon } from 'reactstrap';
-import { Typeahead } from 'react-bootstrap-typeahead'; // ES2015
+import { Typeahead } from 'react-bootstrap-typeahead'; 
 import companynames from '../onlyCompanyName.json';
 import fullcities from '../finalListOfCities.json';
 import levels from '../levelsInfo.json';
+import { ButtonToggle } from "reactstrap";
 
 class LevelsForm extends React.Component{
     constructor(props) {
@@ -98,7 +99,6 @@ class LevelsForm extends React.Component{
     }
 
     handleCompanyChange(event) {
-        debugger;
         if(event && event.length > 0){
             let value = typeof(event[0]) === "string" ? event[0] : event[0].label;
             var tempObj = this.state.newSalaryInfo;
@@ -263,6 +263,28 @@ class LevelsForm extends React.Component{
                                 </FormGroup>
                                 </Col>
                             </Row>
+                            <div className="text-align-center-italic">
+                                Optional
+                            </div>
+                            <Row form>
+                                <div className="radio-toolbar">
+                                    <Col md={6}>
+                                        <input type="radio" id="radioApple" name="radioFruit" value="apple"/>
+                                        <label for="radioApple">Male</label>
+                                    </Col>
+                                    <Col md={6}>
+                                        <input type="radio" id="radioBanana" name="radioFruit" value="banana" />
+                                        <label for="radioBanana">Female</label>
+                                    </Col>
+                                    <Col md={6}>
+                                        <input type="radio" id="radioOrange" name="radioFruit" value="orange" />
+                                        <label for="radioOrange">Other</label> 
+                                    </Col>
+                                </div>
+                            </Row>
+
+                           
+                       
                             <p className="textCenter">
                                 <Button type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                     Submit
