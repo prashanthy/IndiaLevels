@@ -3,7 +3,6 @@ var router = express.Router();
 var fs = require('fs');
 var cities = require('./fullCities.json');
 var fullSalaryInformation = require('./actualSalaryInformation.json');
-var movies = require('./moviedata.json');
 var AWS = require("aws-sdk");
 var uuid = require('uuid');
 

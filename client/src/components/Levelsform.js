@@ -4,7 +4,6 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 import companynames from '../onlyCompanyName.json';
 import fullcities from '../finalListOfCities.json';
 import levels from '../levelsInfo.json';
-import { ButtonToggle } from "reactstrap";
 
 class LevelsForm extends React.Component{
     constructor(props) {
@@ -20,7 +19,8 @@ class LevelsForm extends React.Component{
                     stockGrantValue: '',
                     bonus:'',
                     yoe:'',
-                    yearsAtCompany:''
+                    yearsAtCompany: '', 
+                    gender: ''
             },
             dropdownOpen: false, 
             rsuText: 'Lakhs', 
@@ -45,12 +45,22 @@ class LevelsForm extends React.Component{
         this.saveLevelChange = this.saveLevelChange.bind(this);
         this.changeLevels = this.changeLevels.bind(this);
         this.handleBaseSalaryChange = this.handleBaseSalaryChange.bind(this);
+        this.radioButtonSelected = this.radioButtonSelected.bind(this);
     }
     
     toggleDropDown(params){
         this.setState({
             dropdownOpen: !this.state.dropdownOpen
         });
+    }
+
+    radioButtonSelected(params){
+        debugger;
+        let gender = params.target;
+        // let value = typeof(event[0]) === "string" ? event[0] : event[0].label;
+        var tempObj = this.state.newSalaryInfo;
+        tempObj.gender = gender.value;
+        this.setState({newSalaryInfo: tempObj});
     }
 
     handleCurrencyChange(e) {
@@ -67,18 +77,17 @@ class LevelsForm extends React.Component{
     }
 
     componentDidMount(){
-        fetch("/cities", {
-            method:"GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              }
-        }).then(response => {
-            response.json().then(data => {
-                const mappedData = data.map(x => x.name + "-" + x.state);
-                // this.setState({cities: mappedData});
-            });
-        });
+        // fetch("/cities", {
+        //     method:"GET",
+        //     headers: {
+        //         Accept: "application/json",
+        //         "Content-Type": "application/json"
+        //       }
+        // }).then(response => {
+        //     response.json().then(data => {
+        //         const mappedData = data.map(x => x.name + "-" + x.state);
+        //     });
+        // });
     }
 
     handleSubmit(event) {
@@ -266,7 +275,7 @@ class LevelsForm extends React.Component{
                             <div className="text-align-center-italic">
                                 Optional
                             </div>
-                            <Row form>
+                            <Row form id="genderSelection" onChange={this.radioButtonSelected}>
                                 <div className="radio-toolbar" style={{display:"inherit", margin:"0 auto"}}>
                                     <Col md={4}>
                                         <input type="radio" id="radioMale" name="radioMale" value="male"/>
@@ -282,9 +291,6 @@ class LevelsForm extends React.Component{
                                     </Col>
                                 </div>
                             </Row>
-
-                           
-                       
                             <p className="textCenter">
                                 <Button type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                     Submit
