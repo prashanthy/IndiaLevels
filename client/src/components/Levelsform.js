@@ -55,9 +55,7 @@ class LevelsForm extends React.Component{
     }
 
     radioButtonSelected(params){
-        debugger;
         let gender = params.target;
-        // let value = typeof(event[0]) === "string" ? event[0] : event[0].label;
         var tempObj = this.state.newSalaryInfo;
         tempObj.gender = gender.value;
         this.setState({newSalaryInfo: tempObj});
