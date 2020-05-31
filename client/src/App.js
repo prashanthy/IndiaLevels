@@ -39,7 +39,7 @@ class App extends React.Component {
 
         <Row>
           <Col md={6}>
-            <Link to="/compdata"><Button>Comp Data</Button></Link>
+            {/* <Link to="/compdata"><Button>Comp Data</Button></Link> */}
           </Col>
         </Row>
         <Switch>
