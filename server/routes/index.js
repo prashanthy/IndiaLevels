@@ -5,6 +5,7 @@ var cities = require('./fullCities.json');
 var fullSalaryInformation = require('./actualSalaryInformation.json');
 var AWS = require("aws-sdk");
 var uuid = require('uuid');
+var https = require('https');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,7 +18,26 @@ router.post('/post-test', (req, res) => {
   res.sendStatus(200);
 });
 
-router.get('/cities', function(req, res, next){
+router.get('/salary', function (req, res, next) {
+  https.get('https://www.levels.fyi/js/salaryData.json', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    })
+
+    resp.on('end', () => {
+      const finalData = data.toString('utf8');
+      console.log((data.toString('utf8')));
+      res.setHeader('Content-Type', 'application/json');
+      console.log(JSON.parse(finalData));
+      res.json(JSON.parse(finalData));
+    })
+  }).on('error', (err) => {
+    console.log('Error:' + err.message);
+  })
+});
+
+router.get('/cities', function (req, res, next) {
   console.log(cities);
   res.json(cities);
 });

@@ -42,6 +42,15 @@
   border-radius: 4px;
 }
 
+.textCenter{
+  margin-top: 2em;
+}
+
+.submitBtn{
+  display: "flex";
+  text-align: "center";
+}
+
 .radio-toolbar input[type="radio"]:checked + label {
   background-color:#bfb;
   border-color: #4c4;

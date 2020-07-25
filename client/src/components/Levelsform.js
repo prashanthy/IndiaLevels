@@ -99,7 +99,8 @@ class LevelsForm extends React.Component{
             "Content-Type": "application/json"
           }
         }).then(response => {
-          response.json().then(data => {
+            response.json().then(data => {
+            debugger
             console.log("Successful" + data.username);
           });
         });
@@ -290,7 +291,7 @@ class LevelsForm extends React.Component{
                                 </div>
                             </Row>
                             <p className="textCenter">
-                                <Button type="submit" color="primary" className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                <Button type="submit" color="primary" onSubmit={this.handleSubmit.bind(this)} className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px"}}>
                                     Submit
                                 </Button>
                             </p>
