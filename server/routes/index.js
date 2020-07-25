@@ -28,7 +28,7 @@ router.get('/salary', function (req, res, next) {
     resp.on('end', () => {
       const finalData = data.toString('utf8');
       console.log((data.toString('utf8')));
-      res.setHeader('Content-Type', 'application/json');
+      // res.setHeader('Content-Type', 'application/json');
       console.log(JSON.parse(finalData));
       res.json(JSON.parse(finalData));
     })

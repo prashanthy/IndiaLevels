@@ -4,6 +4,9 @@ import { Typeahead } from 'react-bootstrap-typeahead';
 import companynames from '../onlyCompanyName.json';
 import fullcities from '../finalListOfCities.json';
 import levels from '../levelsInfo.json';
+import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router';
+
 
 class LevelsForm extends React.Component{
     constructor(props) {
@@ -34,7 +37,8 @@ class LevelsForm extends React.Component{
                 "investmentbanker": "Investment Banker", 
                 "technicalprogrammanager": "Technical Program Manager"
             }, 
-            cities : fullcities
+            cities: fullcities, 
+            formSubmitted: false
         };
         this.toggleDropDown = this.toggleDropDown.bind(this);
         this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
@@ -100,8 +104,11 @@ class LevelsForm extends React.Component{
           }
         }).then(response => {
             response.json().then(data => {
-            debugger
-            console.log("Successful" + data.username);
+                debugger
+                this.setState({
+                    formSubmitted: true
+                })
+                console.log("Successful" + data.username);
           });
         });
     }
@@ -172,134 +179,138 @@ class LevelsForm extends React.Component{
         this.setState({newSalaryInfo: tempObj});
     }
 
-    render(){
-        return (
-            <Container>
-                <Row>
-                    <Col>
-                        <Form onSubmit={this.handleSubmit} >
-                            <FormGroup>
-                                <Typeahead id="companynameId" onChange={this.handleCompanyChange}
-                                allowNew
-                                    options={companynames.sort()}
-                                    defaultValue={this.state.companyName}
-                                    placeholder="Company Name"
-                                    size="lg"
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleJobTitleChange} bsSize="lg">
-                                    <option value="selectOne" disabled>Select Job Title</option>    
-                                    <option value="softwareengineer">Software Engineer</option>
-                                    <option value="softwareengineeringmanager">Software Engineering Manager</option>
-                                    <option value="productmanager">Product Manager</option>
-                                    <option value="datascientist">Data Scientist</option>
-                                    <option value="investmentbanker">Investment Banker</option>
-                                    <option value="technicalprogrammanager">Technical Program Manager</option>
-                                    <option value="other">Other</option>
-                                </Input>
-                            </FormGroup>
-                            <FormGroup>
-                                <Typeahead id="levelId" onChange={this.saveLevelChange} size="lg"
+    render() {
+        if (this.state.formSubmitted === true) {
+            return <Redirect to='/compdata' />
+        } else {
+            return (
+                <Container>
+                    <Row>
+                        <Col>
+                            <Form onSubmit={this.handleSubmit} >
+                                <FormGroup>
+                                    <Typeahead id="companynameId" onChange={this.handleCompanyChange}
                                     allowNew
-                                    options={this.state.actualLevelsArray}
-                                    selected={this.state.level}
-                                    placeholder="Level" />
-                            </FormGroup>
-                            <FormGroup>
-                            <Typeahead id="location" onChange={this.handleLocationChange} size="lg"
-                                allowNew
-                                    options={fullcities}
-                                    selected={this.state.location}
-                                    placeholder="Location" className=""
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="amount">Total Compensation</Label>
-                                <InputGroup>
-                                    <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                    <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg" name="totalCompensation" onChange={this.handleBaseSalaryChange} className=""/>
-                                    <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
-                                </InputGroup>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label for="amount">Base Salary</Label>
-                                <InputGroup>
-                                    <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                    <Input placeholder="Base Salary" min={0} max={100} type="number"name="baseSalary"  step="1" bsSize="lg" onChange={this.handleBaseSalaryChange} className=""/>
-                                    <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
-                                </InputGroup>
-                            </FormGroup>
-                            <Row form>
-                                <Col md={6}>
+                                        options={companynames.sort()}
+                                        defaultValue={this.state.companyName}
+                                        placeholder="Company Name"
+                                        size="lg"
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleJobTitleChange} bsSize="lg">
+                                        <option value="selectOne" disabled>Select Job Title</option>    
+                                        <option value="softwareengineer">Software Engineer</option>
+                                        <option value="softwareengineeringmanager">Software Engineering Manager</option>
+                                        <option value="productmanager">Product Manager</option>
+                                        <option value="datascientist">Data Scientist</option>
+                                        <option value="investmentbanker">Investment Banker</option>
+                                        <option value="technicalprogrammanager">Technical Program Manager</option>
+                                        <option value="other">Other</option>
+                                    </Input>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Typeahead id="levelId" onChange={this.saveLevelChange} size="lg"
+                                        allowNew
+                                        options={this.state.actualLevelsArray}
+                                        selected={this.state.level}
+                                        placeholder="Level" />
+                                </FormGroup>
+                                <FormGroup>
+                                <Typeahead id="location" onChange={this.handleLocationChange} size="lg"
+                                    allowNew
+                                        options={fullcities}
+                                        selected={this.state.location}
+                                        placeholder="Location" className=""
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="amount">Total Compensation</Label>
+                                    <InputGroup>
+                                        <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                        <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg" name="totalCompensation" onChange={this.handleBaseSalaryChange} className=""/>
+                                        <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                    </InputGroup>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="amount">Base Salary</Label>
+                                    <InputGroup>
+                                        <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                        <Input placeholder="Base Salary" min={0} max={100} type="number"name="baseSalary"  step="1" bsSize="lg" onChange={this.handleBaseSalaryChange} className=""/>
+                                        <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                    </InputGroup>
+                                </FormGroup>
+                                <Row form>
+                                    <Col md={6}>
+                                        <FormGroup>
+                                            <Label for="amount">Stock Grant Value (avg/year)</Label>
+                                            <InputGroup>
+                                                <InputGroupAddon addonType="prepend">
+                                                    <Input type="select" name="select" id="exampleSelect" onChange={this.handleCurrencyChange} >
+                                                        <option>₹</option>
+                                                        <option>$</option>
+                                                    </Input>
+                                                </InputGroupAddon>
+                                                <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1"  onChange={this.handleBaseSalaryChange} name="stockGrantValue" className=""/>
+                                                <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
+                                            </InputGroup>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col md={6}>
+                                        <FormGroup>
+                                            <Label for="amount">Bonus (avg/year)</Label>
+                                            <InputGroup>
+                                                <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
+                                                <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1"onChange={this.handleBaseSalaryChange} name="bonus" className=""/>
+                                                <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
+                                            </InputGroup>
+                                        </FormGroup>        
+                                    </Col>
+                                </Row>
+                                <Row form>
+                                    <Col md={6}>
                                     <FormGroup>
-                                        <Label for="amount">Stock Grant Value (avg/year)</Label>
-                                        <InputGroup>
-                                            <InputGroupAddon addonType="prepend">
-                                                <Input type="select" name="select" id="exampleSelect" onChange={this.handleCurrencyChange} >
-                                                    <option>₹</option>
-                                                    <option>$</option>
-                                                </Input>
-                                            </InputGroupAddon>
-                                            <Input placeholder="Stock Grant Value (avg/year)" min={0} max={100} type="number" step="1"  onChange={this.handleBaseSalaryChange} name="stockGrantValue" className=""/>
-                                            <InputGroupAddon addonType="append">{this.state.rsuText}</InputGroupAddon>
-                                        </InputGroup>
+                                        <Label for="yoeAtCompany">Years at the Company</Label>
+                                        <Input type="text" name="yearsAtCompany" id="yoeAtCompany" placeholder="Years at the Company" onChange={this.handleBaseSalaryChange} className=""/>
                                     </FormGroup>
-                                </Col>
-                                <Col md={6}>
+                                    </Col>
+                                    <Col md={6}>
                                     <FormGroup>
-                                        <Label for="amount">Bonus (avg/year)</Label>
-                                        <InputGroup>
-                                            <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
-                                            <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1"onChange={this.handleBaseSalaryChange} name="bonus" className=""/>
-                                            <InputGroupAddon addonType="append">Lakhs</InputGroupAddon>
-                                        </InputGroup>
-                                    </FormGroup>        
-                                </Col>
-                            </Row>
-                            <Row form>
-                                <Col md={6}>
-                                <FormGroup>
-                                    <Label for="yoeAtCompany">Years at the Company</Label>
-                                    <Input type="text" name="yearsAtCompany" id="yoeAtCompany" placeholder="Years at the Company" onChange={this.handleBaseSalaryChange} className=""/>
-                                </FormGroup>
-                                </Col>
-                                <Col md={6}>
-                                <FormGroup>
-                                    <Label for="totalYoe">Years of Experience</Label>
-                                    <Input type="text" name="yoe" id="totalYoe" placeholder="Years of Experience" onChange={this.handleBaseSalaryChange} className=""/>
-                                </FormGroup>
-                                </Col>
-                            </Row>
-                            <div className="text-align-center-italic">
-                                Optional
-                            </div>
-                            <Row form id="genderSelection" onChange={this.radioButtonSelected}>
-                                <div className="radio-toolbar" style={{display:"inherit", margin:"0 auto"}}>
-                                    <Col md={4}>
-                                        <input type="radio" id="radioMale" name="radioMale" value="male"/>
-                                        <label for="radioMale">Male</label>
+                                        <Label for="totalYoe">Years of Experience</Label>
+                                        <Input type="text" name="yoe" id="totalYoe" placeholder="Years of Experience" onChange={this.handleBaseSalaryChange} className=""/>
+                                    </FormGroup>
                                     </Col>
-                                    <Col md={4}>
-                                        <input type="radio" id="radioFemale" name="radioFemale" value="female" />
-                                        <label for="radioFemale">Female</label>
-                                    </Col>
-                                    <Col md={4}>
-                                        <input type="radio" id="radioOther" name="radioOther" value="other" />
-                                        <label for="radioOther">Other</label> 
-                                    </Col>
+                                </Row>
+                                <div className="text-align-center-italic">
+                                    Optional
                                 </div>
-                            </Row>
-                            <p className="textCenter">
-                                <Button type="submit" color="primary" onSubmit={this.handleSubmit.bind(this)} className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px"}}>
-                                    Submit
-                                </Button>
-                            </p>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
-        )
+                                <Row form id="genderSelection" onChange={this.radioButtonSelected}>
+                                    <div className="radio-toolbar" style={{display:"inherit", margin:"0 auto"}}>
+                                        <Col md={4}>
+                                            <input type="radio" id="radioMale" name="radioMale" value="male"/>
+                                            <label for="radioMale">Male</label>
+                                        </Col>
+                                        <Col md={4}>
+                                            <input type="radio" id="radioFemale" name="radioFemale" value="female" />
+                                            <label for="radioFemale">Female</label>
+                                        </Col>
+                                        <Col md={4}>
+                                            <input type="radio" id="radioOther" name="radioOther" value="other" />
+                                            <label for="radioOther">Other</label> 
+                                        </Col>
+                                    </div>
+                                </Row>
+                                <p className="textCenter">
+                                    <Button type="submit" color="primary" onSubmit={this.handleSubmit.bind(this)} className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px"}}>
+                                        Submit
+                                    </Button>
+                                </p>
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
+            )
+        }
     }
 }
 
