@@ -5,7 +5,6 @@ import companynames from '../onlyCompanyName.json';
 import fullcities from '../finalListOfCities.json';
 import levels from '../levelsInfo.json';
 import { withRouter } from 'react-router-dom';
-import { Redirect } from 'react-router';
 
 class LevelsForm extends React.Component{
     constructor(props) {
