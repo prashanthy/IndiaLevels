@@ -77,35 +77,40 @@ class LevelsForm extends React.Component{
     }
 
     componentDidMount(){
-        // fetch("/cities", {
-        //     method:"GET",
-        //     headers: {
-        //         Accept: "application/json",
-        //         "Content-Type": "application/json"
-        //       }
-        // }).then(response => {
-        //     response.json().then(data => {
-        //         const mappedData = data.map(x => x.name + "-" + x.state);
-        //     });
-        // });
+        fetch("https://api.github.com/users/hacktivist123", {
+            method:"GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              }
+        }).then(response => {
+            response.json().then(data => {    
+            console.log(data);
+                // const mappedData = data.map(x => x.name + "-" + x.state);
+            });
+        });
     }
 
     handleSubmit(event) {
         event.preventDefault();
         let salaryInfo = this.state.newSalaryInfo;
-        fetch("/post-test", {
-          method: "POST",
-          body: JSON.stringify(salaryInfo),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          }
-        }).then(response => {
-            response.json().then(data => {
-                this.props.history.push('/compdata');
-                console.log("Successful" + data.username);
-          });
-        });
+        debugger;
+        // fetch("https://9j9hwjn03f.execute-api.us-west-2.amazonaws.com/p")
+        // .then(response => response.json())
+        // .then(data => {
+        //         this.props.history.push('/compdata');
+        //         console.log("Successful" + data.username);
+        //     })
+        // })
+
+        fetch('https://9j9hwjn03f.execute-api.us-west-2.amazonaws.com/p')
+        .then(response => response.json())
+        .then(data => 
+            {   
+               this.props.history.push('/compdata');
+               console.log("Successful" + data.username);
+            }
+        );
     }
 
     handleCompanyChange(event) {

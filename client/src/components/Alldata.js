@@ -23,7 +23,12 @@ class Alldata extends React.Component {
         const apiUrl = 'https://6appzkoe46.execute-api.us-west-2.amazonaws.com/prod/movies';
         fetch(apiUrl)
         .then((response) => response.json())
-        .then((data) => console.log('This is your data', data));
+        .then(
+            (data) => {
+                debugger;
+                console.log('This is your data', data);
+            }
+        );
     }
 
     render(){
