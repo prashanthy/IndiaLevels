@@ -94,19 +94,14 @@ class LevelsForm extends React.Component{
     handleSubmit(event) {
         event.preventDefault();
         let salaryInfo = this.state.newSalaryInfo;
-        fetch("/post-test", {
-          method: "POST",
-          body: JSON.stringify(salaryInfo),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          }
-        }).then(response => {
-            response.json().then(data => {
-                this.props.history.push('/compdata');
-                console.log("Successful" + data.username);
-          });
-        });
+        fetch('https://9j9hwjn03f.execute-api.us-west-2.amazonaws.com/p')
+        .then(response => response.json())
+        .then(data => 
+            {   
+               this.props.history.push('/compdata');
+               console.log("Successful" + JSON.parse(data.body).main);
+            }
+        );
     }
 
     handleCompanyChange(event) {
@@ -152,7 +147,6 @@ class LevelsForm extends React.Component{
     }
 
     handleJobTitleChange(event) {
-        debugger
         let value = event.target.value;
         var tempObj = this.state.newSalaryInfo;
         tempObj.jobTitle = value;
