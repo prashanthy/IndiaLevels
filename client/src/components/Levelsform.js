@@ -77,17 +77,18 @@ class LevelsForm extends React.Component{
     }
 
     componentDidMount(){
-        // fetch("/cities", {
-        //     method:"GET",
-        //     headers: {
-        //         Accept: "application/json",
-        //         "Content-Type": "application/json"
-        //       }
-        // }).then(response => {
-        //     response.json().then(data => {
-        //         const mappedData = data.map(x => x.name + "-" + x.state);
-        //     });
-        // });
+        fetch("https://levels.fyi/js/salaryData.json", {
+            method:"GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              }
+        }).then(response => {
+            response.json().then(data => {
+                // const mappedData = data.map(x => x.name + "-" + x.state);
+                console.log(data);
+            });
+        });
     }
 
     handleSubmit(event) {

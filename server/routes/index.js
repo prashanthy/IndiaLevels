@@ -48,14 +48,12 @@ router.get('/updatedb', function(req, res, next){
     endpoint: "dynamodb.us-west-2.amazonaws.com"
   });
   
-  var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+  let dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+  let salaries = fullSalaryInformation;
+  let timeStampBasedRandomNo = uuid.v1();
 
-
-  var salaries = fullSalaryInformation;
-  var timeStampBasedRandomNo = uuid.v1();
-
-  var paramsFinal = {};
-  var newObj = {"SalaryInformation": []};
+  let paramsFinal = {};
+  let newObj = {"SalaryInformation": []};
   paramsFinal.RequestItems = newObj;
 
   salaries.forEach(function(salaryInfo) {
