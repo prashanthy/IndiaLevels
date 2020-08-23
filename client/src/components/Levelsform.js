@@ -174,7 +174,6 @@ class LevelsForm extends React.Component{
     }
 
     render() {
-        
             return (
                 <Container>
                     <Row>
