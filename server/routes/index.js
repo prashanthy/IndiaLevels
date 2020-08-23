@@ -9,21 +9,51 @@ var https = require('https');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  https.get('https://cgkbf6hmfc.execute-api.us-west-2.amazonaws.com/p', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
+    resp.on('end', () => {
+      const finalData = data.toString('utf8');
+      console.log((data.toString('utf8')));
+      // res.setHeader('Content-Type', 'application/json');
+      console.log(JSON.parse(finalData));
+      res.json(JSON.parse(finalData));
+    });
+  }).on('error', (err) => {
+    console.log('Error:' + err.message);
+  });
 });
 
 router.post('/post-test', (req, res) => {
   console.log('Got body:', req.body);
-  res.json({ username: 'Prashanth123' });
-  res.sendStatus(200);
-});
-
-router.get('/salary', function (req, res, next) {
-  https.get('https://www.levels.fyi/js/salaryData.json', (resp) => {
+  // res.json({ username: 'Prashanth123' });
+  // res.sendStatus(200);
+  // https.get('https://n7ftf3fjt7.execute-api.us-west-2.amazonaws.com/p/salary', (resp) => {
+  https.get('https://cgkbf6hmfc.execute-api.us-west-2.amazonaws.com/p', (resp) => {
     let data = '';
     resp.on('data', (chunk) => {
       data += chunk;
-    })
+    });
+    resp.on('end', () => {
+      const finalData = data.toString('utf8');
+      console.log((data.toString('utf8')));
+      // res.setHeader('Content-Type', 'application/json');
+      console.log(JSON.parse(finalData));
+      res.json(JSON.parse(finalData));
+    });
+  }).on('error', (err) => {
+    console.log('Error:' + err.message);
+  });
+});
+
+router.get('/salary', function (req, res, next) {
+  https.get('https://n7ftf3fjt7.execute-api.us-west-2.amazonaws.com/p/salary', (resp) => {
+    let data = '';
+    resp.on('data', (chunk) => {
+      data += chunk;
+    });
 
     resp.on('end', () => {
       const finalData = data.toString('utf8');
@@ -31,10 +61,10 @@ router.get('/salary', function (req, res, next) {
       // res.setHeader('Content-Type', 'application/json');
       console.log(JSON.parse(finalData));
       res.json(JSON.parse(finalData));
-    })
+    });
   }).on('error', (err) => {
     console.log('Error:' + err.message);
-  })
+  });
 });
 
 router.get('/cities', function (req, res, next) {
