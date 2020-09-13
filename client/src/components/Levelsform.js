@@ -94,18 +94,27 @@ class LevelsForm extends React.Component{
     handleSubmit(event) {
         event.preventDefault();
         let salaryInfo = this.state.newSalaryInfo;
+<<<<<<< HEAD
         debugger
         fetch('https://zpwm9sezq7.execute-api.us-west-2.amazonaws.com/p')
         
         // fetch('https://n7ftf3fjt7.execute-api.us-west-2.amazonaws.com/p/salary')
+=======
+        fetch('https://kpn3r0hyj6.execute-api.us-west-2.amazonaws.com/prod')
+>>>>>>> 93e4d7b7eae3aee4743995cf6b0651ac26054b47
         .then(response => response.json())
         .then(data => 
             {   
-               this.props.history.push('/compdata');
-               console.log("Successful" + JSON.parse(data.body).main);
+                console.log("Pushed Data In");
+                this.props.history.push('/compdata');
+                console.log("Successful" + JSON.parse(data.body).main);
             }
         ).catch((error) => {
+<<<<<<< HEAD
             debugger
+=======
+            // Only network error comes here
+>>>>>>> 93e4d7b7eae3aee4743995cf6b0651ac26054b47
             console.log(error);
         });
     }
@@ -176,7 +185,6 @@ class LevelsForm extends React.Component{
     }
 
     render() {
-        
             return (
                 <Container>
                     <Row>
