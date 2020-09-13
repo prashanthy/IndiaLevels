@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var cities = require('./fullCities.json');
-var fullSalaryInformation = require('./actualSalaryInformation.json');
+var fullSalaryInformation = require('./newRecords.json');
 var AWS = require("aws-sdk");
 var uuid = require('uuid');
 var https = require('https');
@@ -142,9 +142,10 @@ router.get('/publish', function(req, res, next){
 
 
   var salaries = fullSalaryInformation;
-  const result = salaries.filter(function(salary){
-    return salary.location.includes("India");
-  });
+  const result = salaries;
+  // const result = salaries.filter(function(salary){
+  //   return salary.location.includes("India");
+  // });
 
   var timeStampBasedRandomNo = uuid.v1();
 
@@ -153,11 +154,11 @@ router.get('/publish', function(req, res, next){
     date1.setDate(date1.getDate() - Math.floor(Math.random() * 30));
    
     var params = {
-      TableName: "SalaryInformation",
+      TableName: "Salary",
       Item: {
-        "rowNumber": timeStampBasedRandomNo,
+        "rowNumber": salaryInfo.rowNumber,
         "jobTitle": salaryInfo.title ,
-        "timestamp": date1.toString() ,
+        "timestamp": date1.toString(),
         "company": salaryInfo.company ,
         "level": salaryInfo.level ,
         "totalyearlycompensation": salaryInfo.totalyearlycompensation ,

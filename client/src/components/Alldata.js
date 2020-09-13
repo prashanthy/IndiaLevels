@@ -8,12 +8,19 @@ class Alldata extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          columnDefs: [
-            { headerName: "Company", field: "company", checkboxSelection: true, sortable: true, filter: true },
+        defaultColDef: {
+            sortable: true
+        },
+        columnDefs: [
+            { headerName: "Company", field: "company", sortable: true, filter: true },
             { headerName: "Level", field: "level", sortable: true},
-            { headerName: "Total Compensation", field: "totalyearlycompensation", sortable: true},
-            { headerName: "Location", field: "location", sortable: true }]
+            { headerName: "Location", field: "location", sortable: true, filter: true },
+            { headerName: "Total Compensation", field: "totalyearlycompensation", sortable: true}]
         };
+
+        colDef.comparator = function(valueA, valueB, nodeA, nodeB, isInverted) {
+            return valueA - valueB;
+        }
     }
     
     componentDidMount(){
@@ -35,10 +42,10 @@ class Alldata extends React.Component {
         return (
             <Container>
                      <div
-                        className="ag-theme-alpine"  style={ {height: '40em', width: '80em'} }>
+                        className="ag-theme-alpine"  style={ {height: '100em', width: '80em'} }>
                         <AgGridReact
-                        columnDefs={this.state.columnDefs}
-                        rowData={this.state.rowData}>
+                            columnDefs={this.state.columnDefs}
+                            rowData={this.state.rowData}>
                         </AgGridReact>
                     </div>
             </Container>
