@@ -77,31 +77,37 @@ class LevelsForm extends React.Component{
     }
 
     componentDidMount(){
-        fetch("https://levels.fyi/js/salaryData.json", {
-            method:"GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              }
-        }).then(response => {
-            response.json().then(data => {
-                // const mappedData = data.map(x => x.name + "-" + x.state);
-                console.log(data);
-            });
-        });
+        // fetch("https://levels.fyi/js/salaryData.json", {
+        //     method:"GET",
+        //     headers: {
+        //         Accept: "application/json",
+        //         "Content-Type": "application/json"
+        //       }
+        // }).then(response => {
+        //     response.json().then(data => {
+        //         // const mappedData = data.map(x => x.name + "-" + x.state);
+        //         console.log(data);
+        //     });
+        // });
     }
 
     handleSubmit(event) {
         event.preventDefault();
         let salaryInfo = this.state.newSalaryInfo;
-        fetch('https://9j9hwjn03f.execute-api.us-west-2.amazonaws.com/p')
+        debugger
+        fetch('https://zpwm9sezq7.execute-api.us-west-2.amazonaws.com/p')
+        
+        // fetch('https://n7ftf3fjt7.execute-api.us-west-2.amazonaws.com/p/salary')
         .then(response => response.json())
         .then(data => 
             {   
                this.props.history.push('/compdata');
                console.log("Successful" + JSON.parse(data.body).main);
             }
-        );
+        ).catch((error) => {
+            debugger
+            console.log(error);
+        });
     }
 
     handleCompanyChange(event) {
