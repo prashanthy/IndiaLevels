@@ -21,7 +21,8 @@ class LevelsForm extends React.Component{
                     bonus:'',
                     yoe:'',
                     yearsAtCompany: '', 
-                    gender: ''
+                    gender: '',
+                    education: ''
             },
             dropdownOpen: false, 
             rsuText: 'Lakhs', 
@@ -216,7 +217,6 @@ class LevelsForm extends React.Component{
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="amount">Total Compensation</Label>
                                     <InputGroup>
                                         <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
                                         <Input placeholder="Total Compensation" min={0} max={100} type="number" step="1" bsSize="lg" name="totalCompensation" onChange={this.handleBaseSalaryChange} className=""/>
@@ -224,7 +224,6 @@ class LevelsForm extends React.Component{
                                     </InputGroup>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="amount">Base Salary</Label>
                                     <InputGroup>
                                         <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
                                         <Input placeholder="Base Salary" min={0} max={100} type="number"name="baseSalary"  step="1" bsSize="lg" onChange={this.handleBaseSalaryChange} className=""/>
@@ -234,7 +233,6 @@ class LevelsForm extends React.Component{
                                 <Row form>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="amount">Stock Grant Value (avg/year)</Label>
                                             <InputGroup>
                                                 <InputGroupAddon addonType="prepend">
                                                     <Input type="select" name="select" id="exampleSelect" onChange={this.handleCurrencyChange} >
@@ -249,7 +247,6 @@ class LevelsForm extends React.Component{
                                     </Col>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Label for="amount">Bonus (avg/year)</Label>
                                             <InputGroup>
                                                 <InputGroupAddon addonType="prepend">₹</InputGroupAddon>
                                                 <Input placeholder="Bonus (avg/year)" min={0} max={100} type="number" step="1"onChange={this.handleBaseSalaryChange} name="bonus" className=""/>
@@ -260,37 +257,47 @@ class LevelsForm extends React.Component{
                                 </Row>
                                 <Row form>
                                     <Col md={6}>
-                                    <FormGroup>
-                                        <Label for="yoeAtCompany">Years at the Company</Label>
-                                        <Input type="text" name="yearsAtCompany" id="yoeAtCompany" placeholder="Years at the Company" onChange={this.handleBaseSalaryChange} className=""/>
-                                    </FormGroup>
+                                        <FormGroup>
+                                        <Input placeholder="Years at the Company" min={0} max={50} type="number" name="yearsAtCompany"  step="1" onChange={this.handleBaseSalaryChange} className=""/>
+                                        </FormGroup>
                                     </Col>
                                     <Col md={6}>
-                                    <FormGroup>
-                                        <Label for="totalYoe">Years of Experience</Label>
-                                        <Input type="text" name="yoe" id="totalYoe" placeholder="Years of Experience" onChange={this.handleBaseSalaryChange} className=""/>
-                                    </FormGroup>
+                                        <FormGroup>                                        
+                                            <Input placeholder="Years of Experience" min={0} max={50} type="number" name="yearsOfExperience"  step="1" onChange={this.handleBaseSalaryChange} className="" />
+                                        </FormGroup>
                                     </Col>
                                 </Row>
                                 <div className="text-align-center-italic">
                                     Optional
                                 </div>
-                                <Row form id="genderSelection" onChange={this.radioButtonSelected}>
-                                    <div className="radio-toolbar" style={{display:"inherit", margin:"0 auto"}}>
-                                        <Col md={4}>
-                                            <input type="radio" id="radioMale" name="radioMale" value="male"/>
-                                            <label for="radioMale">Male</label>
-                                        </Col>
-                                        <Col md={4}>
-                                            <input type="radio" id="radioFemale" name="radioFemale" value="female" />
-                                            <label for="radioFemale">Female</label>
-                                        </Col>
-                                        <Col md={4}>
-                                            <input type="radio" id="radioOther" name="radioOther" value="other" />
-                                            <label for="radioOther">Other</label> 
-                                        </Col>
-                                    </div>
+                                <Row form>
+                                    <Col md={6}>
+                                        <FormGroup>
+                                            <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleJobTitleChange} >
+                                                <option value="selectOne" disabled>Select Gender</option>    
+                                                <option value="softwareengineer">Male</option>
+                                                <option value="softwareengineeringmanager">Female</option>
+                                                <option value="productmanager">Other</option>
+                                            </Input>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col md={6}>
+                                        <FormGroup>
+                                            <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleJobTitleChange} >
+                                                <option value="selectOne" disabled>Select Highest Academic Level</option>    
+                                                <option value="softwareengineer">Bachelor's Degree</option>
+                                                <option value="softwareengineeringmanager">Master's Degree</option>
+                                                <option value="productmanager">Ph.D</option>
+                                            </Input>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col md={12}>
+                                        <FormGroup>
+                                            <Input type="text" name="otherDetails" id="otherDetails" placeholder="Other details" onChange={this.handleBaseSalaryChange} className=""/>
+                                        </FormGroup>
+                                    </Col>
                                 </Row>
+                              
                                 <p className="textCenter">
                                     <Button type="submit" color="primary" onSubmit={this.handleSubmit.bind(this)} className="mx-auto" style={{display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px"}}>
                                         Submit

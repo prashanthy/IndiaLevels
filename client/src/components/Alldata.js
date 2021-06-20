@@ -17,10 +17,9 @@ class Alldata extends React.Component {
             { headerName: "Location", field: "location", sortable: true, filter: true },
             { headerName: "Total Compensation", field: "totalyearlycompensation", sortable: true}]
         };
-
-        colDef.comparator = function(valueA, valueB, nodeA, nodeB, isInverted) {
-            return valueA - valueB;
-        }
+        // colDef.comparator = function(valueA, valueB, nodeA, nodeB, isInverted) {
+        //     return valueA - valueB;
+        // }
     }
     
     componentDidMount(){
