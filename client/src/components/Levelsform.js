@@ -46,6 +46,7 @@ class LevelsForm extends React.Component{
         this.handleJobTitleChange = this.handleJobTitleChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.saveLevelChange = this.saveLevelChange.bind(this);
+        this.handleGenderChange = this.handleGenderChange.bind(this);
         this.changeLevels = this.changeLevels.bind(this);
         this.handleBaseSalaryChange = this.handleBaseSalaryChange.bind(this);
         this.radioButtonSelected = this.radioButtonSelected.bind(this);
@@ -152,6 +153,7 @@ class LevelsForm extends React.Component{
     }
 
     handleJobTitleChange(event) {
+        debugger
         let value = event.target.value;
         var tempObj = this.state.newSalaryInfo;
         tempObj.jobTitle = value;
@@ -172,6 +174,14 @@ class LevelsForm extends React.Component{
         var tempObj = this.state.newSalaryInfo;
         tempObj[name] = value;
         this.setState({newSalaryInfo: tempObj});
+    }
+
+    handleGenderChange(genderValue){
+        let gender = genderValue.target.name;
+        let value = genderValue.target.value;
+        var tempObj = this.state.newSalaryInfo;
+        tempObj[gender] = value
+        this.setState({newSalaryInfo: tempObj})
     }
 
     render() {
@@ -273,7 +283,7 @@ class LevelsForm extends React.Component{
                                 <Row form>
                                     <Col md={6}>
                                         <FormGroup>
-                                            <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleJobTitleChange} >
+                                            <Input type="select" value={this.state.newSalaryInfo.jobTitle} id="jobTitle" onChange={this.handleGenderChange} >
                                                 <option value="selectOne" disabled>Select Gender</option>    
                                                 <option value="softwareengineer">Male</option>
                                                 <option value="softwareengineeringmanager">Female</option>
